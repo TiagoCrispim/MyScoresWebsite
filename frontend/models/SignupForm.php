@@ -10,8 +10,12 @@ use common\models\User;
 class SignupForm extends Model
 {
     public $username;
+    public $nome;
     public $email;
+    public $dataNascimento;
+    public $nacionalidade;
     public $password;
+    public $confirmassaoPassword;
 
 
     /**
@@ -25,6 +29,17 @@ class SignupForm extends Model
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
+            ['nome', 'trim'],
+            ['nome', 'required'],
+            ['nome', 'string', 'min' => 5, 'max' => 255],
+
+            ['dataNascimento', 'trim'],
+            ['dataNascimento', 'required'],
+
+            ['nacionalidade', 'trim'],
+            ['nacionalidade', 'required'],
+            ['nacionalidade', 'string', 'min'=> 2, 'max' => 255],
+
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
@@ -33,6 +48,9 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+
+            ['confirmassaoPassword', 'required'],
+            ['confirmassaoPassword', 'string', 'min' => 6],
         ];
     }
 

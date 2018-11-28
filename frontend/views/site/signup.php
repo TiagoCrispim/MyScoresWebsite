@@ -21,9 +21,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
+                <?= $form->field($model, 'nome') ?>
+
                 <?= $form->field($model, 'email') ?>
 
+                <?= $form->field($model, 'dataNascimento') ?>
+
+                <?= $form->field($model, 'nacionalidade') ?>
+
                 <?= $form->field($model, 'password')->passwordInput() ?>
+
+                <?= $form->field($model, 'confirmassaoPassword')->passwordInput() ?>
 
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
