@@ -33,18 +33,18 @@ class SignupForm extends Model
             ['nome', 'required'],
             ['nome', 'string', 'min' => 5, 'max' => 255],
 
+            ['email', 'trim'],
+            ['email', 'required'],
+            ['email', 'email'],
+            ['email', 'string', 'max' => 255],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+
             ['dataNascimento', 'trim'],
             ['dataNascimento', 'required'],
 
             ['nacionalidade', 'trim'],
             ['nacionalidade', 'required'],
             ['nacionalidade', 'string', 'min'=> 2, 'max' => 255],
-
-            ['email', 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
-            ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
@@ -67,7 +67,10 @@ class SignupForm extends Model
         
         $user = new User();
         $user->username = $this->username;
+        $user->nome = $this->nome;
+        $user->dataNascimento = $this->dataNascimento;
         $user->email = $this->email;
+        $user->nacionalidade = $this->nacionalidade;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         
