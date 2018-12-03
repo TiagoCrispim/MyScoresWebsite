@@ -22,8 +22,8 @@ class m130524_201442_init extends Migration
             'email' => $this->string()->notNull()->unique(),
             'dataNascimento' => $this->date()->notNull(),
             'nacionalidade' => $this->string(20)->notNull(),
-            'golosMarcados' => $this->integer(5)->notNull(),
-            'jogosJogados' => $this->integer(5)->notNull(),
+            'golosMarcados' => $this->integer(5)->defaultValue(0)->notNull(),
+            'jogosJogados' => $this->integer(5)->defaultValue(0)->notNull(),
 
             'status' => $this->smallInteger()->notNull()->defaultValue(10),
             'created_at' => $this->integer()->notNull(),
