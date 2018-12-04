@@ -11,7 +11,9 @@ class m130524_201442_init extends Migration
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
-        //tabela user
+        /**
+         * Tabela User da Base de Dados.
+         */
         $this->createTable('{{%user}}', [
             'id' => $this->primaryKey(),
             'username' => $this->string()->notNull()->unique(),
@@ -29,7 +31,9 @@ class m130524_201442_init extends Migration
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
-        //tabela equipa
+        /**
+         * Tabela Equipa da Base de Dados.
+         */
         $this->createTable('{{%equipa}}', [
             'id' => $this->primaryKey(),
             'id_jogo' => $this->integer()->notNull(),
@@ -44,7 +48,9 @@ class m130524_201442_init extends Migration
             'id_jogador9' => $this->integer(),
             'id_jogador10' => $this->integer(),
         ], $tableOptions);
-        //tabela jogo
+        /**
+         * Tabela Jogo da Base de Dados.
+         */
         $this->createTable('{{%jogo}}', [
             'id' => $this->primaryKey(),
             'id_equipa1' => $this->integer()->notNull(),
@@ -55,7 +61,9 @@ class m130524_201442_init extends Migration
             'hora' => $this->string()->notNull(),
             'local' => $this->string()->notNull(),
         ], $tableOptions);
-        //tabela golos_jogo
+        /**
+         * Tabela Golos_Jogo da Base de Dados.
+         */
         $this->createTable('{{%golos_jogo}}', [
             'id' => $this->primaryKey(),
             'id_jogador' => $this->integer()->notNull(),
