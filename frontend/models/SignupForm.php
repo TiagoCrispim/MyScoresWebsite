@@ -15,7 +15,7 @@ class SignupForm extends Model
     public $dataNascimento;
     public $nacionalidade;
     public $password;
-    public $confirmassaoPassword;
+    public $confirmacaoPassword;
 
 
     /**
@@ -49,8 +49,9 @@ class SignupForm extends Model
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
 
-            ['confirmassaoPassword', 'required'],
-            ['confirmassaoPassword', 'string', 'min' => 6],
+            ['confirmacaoPassword', 'required'],
+            ['confirmacaoPassword', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match"],
+            ['confirmacaoPassword', 'string', 'min' => 6],
         ];
     }
 
