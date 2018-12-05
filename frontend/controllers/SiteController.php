@@ -134,6 +134,16 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays perfil page.
+     *
+     * @return mixed
+     */
+    public function actionPerfil()
+    {
+        return $this->render('perfil');
+    }
+
+    /**
      * Displays about page.
      *
      * @return mixed
