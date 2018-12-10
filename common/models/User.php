@@ -195,7 +195,8 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * relação da tabela user com a tabela equipa
      */
-    public function getEquipa(){
-        return $this->hasOne(Equipa::classname(),['id'=>'id_equipa']);
+    public function getEquipa()
+    {
+        return $this->hasMany(Equipa::classname(),['id'=>'id_equipa']);
     }
 }

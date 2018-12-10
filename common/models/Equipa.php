@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use common\models\User;
 use Yii;
 
 /**
@@ -60,5 +61,21 @@ class Equipa extends \yii\db\ActiveRecord
             'id_jogador9' => 'Id Jogador9',
             'id_jogador10' => 'Id Jogador10',
         ];
+    }
+
+    /**
+     * relação da tabela equipa com a tabela jogo
+     */
+    public function getJogo()
+    {
+        return $this->hasOne(Jogo::classname(),['id'=>'id_jogo']);
+    }
+
+    /**
+     * relação da tabela equipa com a tabela user (jogadores/utilizadores)
+     */
+    public function getJogadores()
+    {
+        return $this->hasMany(User::classname(),['id'=>'id_jogador']);
     }
 }

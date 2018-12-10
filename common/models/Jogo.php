@@ -53,4 +53,12 @@ class Jogo extends \yii\db\ActiveRecord
             'local' => 'Local',
         ];
     }
+
+    /**
+     * relação da tabela jogo com a tabela equipa
+     */
+    public function getEquipas()
+    {
+        return $this->hasMany(Equipa::classname(),['id'=>'id_equipa']);
+    }
 }
