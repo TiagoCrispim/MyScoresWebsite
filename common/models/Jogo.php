@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\Equipa;
 
 /**
  * This is the model class for table "jogo".
