@@ -74,12 +74,13 @@ class SignupForm extends Model
         $user->nacionalidade = $this->nacionalidade;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        
-        return $user->save() ? $user : null;
+        $user->save(false);
 
         $auth = \Yii::$app->authManager;
         $regularRole = $auth->getRole('regular');
         $auth->assign($regularRole, $user->getId());
+
+        return $user;
 
     }
 }

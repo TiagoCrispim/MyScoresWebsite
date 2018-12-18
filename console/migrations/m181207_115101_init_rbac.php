@@ -34,10 +34,15 @@ class m181207_115101_init_rbac extends Migration
         $enterBackEnd->description = 'defeining who can enter the back end of the site';
         $auth->add($enterBackEnd);
 
+        // add "enterFrontEnd" permission
+        $enterFrontEnd = $auth->createPermission('enterFrontEnd');
+        $enterFrontEnd->description = 'defeining who can enter the front end of the site';
+        $auth->add($enterFrontEnd);
+
         $regular = $auth->createRole('regular');
         $auth->add($regular);
         $auth->addChild($regular, $createUser);
-
+        $auth->addChild($regular, $enterFrontEnd);
 
         // add  role and give this role the "createPost" permission
         $admin = $auth->createRole('admin');
