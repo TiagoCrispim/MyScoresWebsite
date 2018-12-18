@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\User;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -133,6 +134,17 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    /**
+     * Displays perfil page.
+     *
+     * @return mixed
+     */
+    public function actionPerfil()
+    {
+        $model = User::findOne(['id'=>'$id']);
+        return $this->render('perfil', ['model'=>$model]);
     }
 
     /**

@@ -76,7 +76,7 @@ class m130524_201442_init extends Migration
             'golosEquipa1' => $this->integer(2)->notNull(),
             'golosEquipa2' => $this->integer(2)->notNull(),
             'data' => $this->date()->notNull(),
-            'hora' => $this->string()->notNull(),
+            'hora' => $this->time()->notNull(),
             'local' => $this->string()->notNull(),
         ], $tableOptions);
         /**

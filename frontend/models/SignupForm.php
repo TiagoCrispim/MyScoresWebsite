@@ -39,6 +39,7 @@ class SignupForm extends Model
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
 
+            ['dataNascimento', 'date', 'format' => 'php:Y-m-d'],
             ['dataNascimento', 'trim'],
             ['dataNascimento', 'required'],
 

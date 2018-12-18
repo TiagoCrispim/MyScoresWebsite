@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\Equipa;
 
 /**
  * This is the model class for table "jogo".
@@ -12,7 +13,8 @@ use Yii;
  * @property int $id_equipa2
  * @property int $golosEquipa1
  * @property int $golosEquipa2
- * @property string $data
+ * @property \data $data
+ * @property \time $hora
  * @property string $local
  */
 class Jogo extends \yii\db\ActiveRecord
@@ -34,6 +36,7 @@ class Jogo extends \yii\db\ActiveRecord
             [['id_equipa1', 'id_equipa2', 'local'], 'required'],
             [['id_equipa1', 'id_equipa2', 'golosEquipa1', 'golosEquipa2'], 'integer'],
             [['data'], 'safe'],
+            [['hora'], 'safe'],
             [['local'], 'string', 'max' => 255],
         ];
     }
@@ -50,7 +53,16 @@ class Jogo extends \yii\db\ActiveRecord
             'golosEquipa1' => 'Golos Equipa1',
             'golosEquipa2' => 'Golos Equipa2',
             'data' => 'Data',
+            'hora' => 'Hora',
             'local' => 'Local',
         ];
+    }
+
+    /**
+     * relação da tabela jogo com a tabela equipa
+     */
+    public function getEquipas()
+    {
+        return $this->hasMany(Equipa::classname(),['id'=>'id_equipa']);
     }
 }
