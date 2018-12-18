@@ -22,6 +22,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'data')->textInput() ?>
 
+    <?= $form->field($model, 'hora')->textInput() ?>
+
     <?= $form->field($model, 'local')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
