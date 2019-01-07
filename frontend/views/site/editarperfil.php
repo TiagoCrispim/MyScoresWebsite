@@ -176,11 +176,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'Zimbabwe' => 'Zimbabwe',
             ); ?>
 
-            <?= $form->field($model, 'nacionalidade')->dropDownList($countries,['prompt'=>'Select']); ?>
-
-            <?= $form->field($model, 'password')->passwordInput() ?>
-
-            <?= $form->field($model, 'confirmacaoPassword')->passwordInput() ?>
+            <?= $form->field($model, 'nacionalidade')->dropDownList($countries,['prompt'=>'Select'])->hint(Yii::$app->user->identity->nacionalidade); ?>
 
             <div class="form-group">
                 <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
@@ -189,21 +185,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php ActiveForm::end(); ?>
         </div>
     </div>
-
-    <p>Username:</p>
-    <p><?= Yii::$app->user->identity->username ?></p>
-    <p>Nome:</p>
-    <p><?= Yii::$app->user->identity->nome ?></p>
-
-    <p><?= Yii::$app->user->identity->email ?></p>
-    <p>Data de Nascimento:</p>
-    <p><?= Yii::$app->user->identity->dataNascimento ?></p>
-    <p>Nacionalidade:</p>
-    <p><?= Yii::$app->user->identity->nacionalidade ?></p>
-    <p>Golos Marcados:</p>
-    <p><?= Yii::$app->user->identity->golosMarcados ?></p>
-    <p>Jogos Jogados:</p>
-    <p><?= Yii::$app->user->identity->jogosJogados ?></p>
 
     <p><a class="btn btn-default" href="">Cancelar</a><a class="btn btn-default" href="">Guardar Alterações</a></p>
 
