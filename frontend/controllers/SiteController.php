@@ -88,17 +88,30 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
             if (\Yii::$app->user->can('enterFrontEnd')) {
-                return $this->render('index');
+                return $this->goBack();
+            } else {
+                Yii::$app->user->logout();
+
+                Yii::warning("Não tem permissões para entrar nesta area");
 
 
             }
-        } else {
+
+
+        }
+        else{
+
+
+
             $model->password = '';
 
             return $this->render('login', [
                 'model' => $model,
             ]);
+
+
         }
+
     }
 
     /**
