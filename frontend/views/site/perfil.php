@@ -14,20 +14,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>Os seus dados:</p>
 
     <p>Username:</p>
-    <p><?= $model->username ?></p>
+    <p><?= Yii::$app->user->identity->username ?></p>
     <p>Nome:</p>
-    <p><?= $model->nome ?></p>
+    <p><?= Yii::$app->user->identity->nome ?></p>
     <p>Email:</p>
-    <p><?= $model->email ?></p>
+    <p><?= Yii::$app->user->identity->email ?></p>
     <p>Data de Nascimento:</p>
-    <p><?= $model->dataNascimento ?></p>
+    <p><?= Yii::$app->user->identity->dataNascimento ?></p>
     <p>Nacionalidade:</p>
-    <p><?= $model->nacionalidade ?></p>
+    <p><?= Yii::$app->user->identity->nacionalidade ?></p>
     <p>Golos Marcados:</p>
-    <p><?= $model->golosMarcados ?></p>
+    <p><?= Yii::$app->user->identity->golosMarcados ?></p>
     <p>Jogos Jogados:</p>
-    <p><?= $model->jogosJogados ?></p>
+    <p><?= Yii::$app->user->identity->jogosJogados ?></p>
 
-    <p><a class="btn btn-default" href="">Editar Perfil</a></p>
+    <p><a class="btn btn-default" href="">Alterar Palavra-Passe</a><a class="btn btn-default" url="">Editar Perfil</a></p>
 
 </div>
