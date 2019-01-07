@@ -42,7 +42,6 @@ class m181207_115101_init_rbac extends Migration
         $blocked = $auth->createRole('blocked');
         $auth->add($blocked);
         $auth->addChild($blocked, $createUser);
-        $auth->addChild($blocked, $enterFrontEnd);
 
         $regular = $auth->createRole('regular');
         $auth->add($regular);
