@@ -146,6 +146,17 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays editarperfil page.
+     *
+     * @return mixed
+     */
+    public function actionEditarperfil()
+    {
+        $model = User::findOne(['id'=>'$id']);
+        return $this->render('editarperfil');
+    }
+
+    /**
      * Displays about page.
      *
      * @return mixed
