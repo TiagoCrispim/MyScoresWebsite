@@ -85,20 +85,33 @@ class SiteController extends Controller
     {
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-
-            if (\Yii::$app->user->can('enterFrontEnd')) {
-                return $this->render('index');
+        if (\Yii::$app->user->can('enterFrontEnd')) {
 
 
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+                return $this->goBack();
+            } else {
+                $model->password = '';
+
+                return $this->render('login', [
+                    'model' => $model,
+                ]);
             }
-        } else {
-            $model->password = '';
+
+
+        }
+        else{
+
+
 
             return $this->render('login', [
                 'model' => $model,
             ]);
+            Yii::warning("Não tem permissões para entrar nesta area");
+            $model->password = '';
+
         }
+
     }
 
     /**

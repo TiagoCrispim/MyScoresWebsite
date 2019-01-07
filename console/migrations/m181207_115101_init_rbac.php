@@ -39,6 +39,11 @@ class m181207_115101_init_rbac extends Migration
         $enterFrontEnd->description = 'defeining who can enter the front end of the site';
         $auth->add($enterFrontEnd);
 
+        $blocked = $auth->createRole('blocked');
+        $auth->add($blocked);
+        $auth->addChild($blocked, $createUser);
+        $auth->addChild($blocked, $enterFrontEnd);
+
         $regular = $auth->createRole('regular');
         $auth->add($regular);
         $auth->addChild($regular, $createUser);
