@@ -12,7 +12,6 @@ class EditarPasswordForm extends Model
 {
     public $id;
     public $password;
-    public $novaPassword;
     public $confirmacaoPassword;
 
 
@@ -25,9 +24,6 @@ class EditarPasswordForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
-
-            ['novaPassword', 'required'],
-            ['novaPassword', 'string', 'min' => 6],
 
             ['confirmacaoPassword', 'required'],
             ['confirmacaoPassword', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match"],

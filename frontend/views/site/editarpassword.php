@@ -11,11 +11,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Faça as alterações que pretende e guarde as alterações:</p>
+    <p>Alteração de Palavra Passe:</p>
 
     <div class="row">
         <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+            <?php $form = ActiveForm::begin(['id' => 'form-editpassword']); ?>
 
             <p>Nova palavra passe:</p>
             <?= $form->field($model, 'password')->passwordInput() ?>
