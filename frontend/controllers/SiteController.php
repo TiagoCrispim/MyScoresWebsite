@@ -77,6 +77,16 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays homepage.
+     *
+     * @return mixed
+     */
+    public function actionHome()
+    {
+        return $this->render('home');
+    }
+
+    /**
      * Logs in a user.
      *
      * @return mixed
@@ -88,7 +98,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
             if (\Yii::$app->user->can('enterFrontEnd')) {
-                echo \Yii::$app->view->renderFile('MyScoresWebsite/frontend/views/jogo/index.php');
+                return $this->render('home');
             } else {
                 Yii::$app->user->logout();
 
