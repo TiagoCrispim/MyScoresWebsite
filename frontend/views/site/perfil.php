@@ -14,20 +14,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>Os seus dados:</p>
 
     <p>Username:</p>
-    <p><?= Yii::$app->user->identity->username ?></p>
+    <p><?= $user->username ?></p>
     <p>Nome:</p>
-    <p><?= Yii::$app->user->identity->nome ?></p>
+    <p><?= $user->nome ?></p>
     <p>Email:</p>
-    <p><?= Yii::$app->user->identity->email ?></p>
+    <p><?= $user->email ?></p>
     <p>Data de Nascimento:</p>
-    <p><?= Yii::$app->user->identity->dataNascimento ?></p>
+    <p><?= $user->dataNascimento ?></p>
     <p>Nacionalidade:</p>
-    <p><?= Yii::$app->user->identity->nacionalidade ?></p>
+    <p><?= $user->nacionalidade ?></p>
     <p>Golos Marcados:</p>
-    <p><?= Yii::$app->user->identity->golosMarcados ?></p>
+    <p><?= $user->golosMarcados ?></p>
     <p>Jogos Jogados:</p>
-    <p><?= Yii::$app->user->identity->jogosJogados ?></p>
+    <p><?= $user->jogosJogados ?></p>
 
-    <p><a class="btn btn-default" href="">Alterar Palavra-Passe</a><a class="btn btn-default" url="">Editar Perfil</a></p>
+    <p><?= Html::a('Alterar Palavra Passe', ['site/editarpassword'], ['class' => 'btn btn-default']) ?><?= Html::a('Editar Perfil', ['site/editarperfil'], ['class' => 'btn btn-default']) ?></p>
 
 </div>

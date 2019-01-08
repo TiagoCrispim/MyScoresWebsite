@@ -2,6 +2,8 @@
 namespace frontend\controllers;
 
 use common\models\User;
+use frontend\models\EditarPasswordForm;
+use frontend\models\EditarPerfilForm;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -141,8 +143,9 @@ class SiteController extends Controller
      */
     public function actionPerfil()
     {
-        $model = User::findOne(['id'=>'$id']);
-        return $this->render('perfil', ['model'=>$model]);
+        //$user corresponde ao utilizador com  sessão inciciada
+        $user = Yii::$app->user->identity ;
+        return $this->render('perfil', ['user'=>$user]);
     }
 
     /**
@@ -152,8 +155,33 @@ class SiteController extends Controller
      */
     public function actionEditarperfil()
     {
-        $model = User::findOne(['id'=>'$id']);
-        return $this->render('editarperfil');
+        $model = new EditarPerfilForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->guardardados()) {
+                $user = Yii::$app->user->identity ;
+                return $this->render('perfil', ['user' => $user]);
+            }
+        }
+
+        return $this->render('editarperfil', ['model' => $model]);
+    }
+
+    /**
+     * Displays editarperfil page.
+     *
+     * @return mixed
+     */
+    public function actionEditarpassword()
+    {
+        $model = new EditarPasswordForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->guardardados()) {
+                $user = Yii::$app->user->identity ;
+                return $this->render('perfil', ['user' => $user]);
+            }
+        }
+
+        return $this->render('editarpassword', ['model' => $model]);
     }
 
     /**

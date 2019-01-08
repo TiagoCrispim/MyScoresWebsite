@@ -3,12 +3,14 @@ namespace frontend\models;
 
 use yii\base\Model;
 use common\models\User;
+use Yii;
 
 /**
  * Signup form
  */
 class EditarPerfilForm extends Model
 {
+    public $username;
     public $nome;
     public $email;
     public $dataNascimento;
@@ -21,6 +23,10 @@ class EditarPerfilForm extends Model
     public function rules()
     {
         return [
+            ['username', 'trim'],
+            ['username', 'required'],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
+            ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['nome', 'trim'],
             ['nome', 'required'],
@@ -53,13 +59,13 @@ class EditarPerfilForm extends Model
             return null;
         }
 
-        $user = Yii::$app->user->identity->id;
+        $user = Yii::$app->user->identity;
         $user->username = $this->username;
         $user->nome = $this->nome;
-        $user->dataNascimento = $this->dataNascimento;
         $user->email = $this->email;
+        $user->dataNascimento = $this->dataNascimento;
         $user->nacionalidade = $this->nacionalidade;
         
-        return $user->save() ? $user : null;
+        return $user->save(false) ? $user : null;
     }
 }
