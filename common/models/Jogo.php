@@ -1,9 +1,9 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
-use app\models\Equipa;
+//use app\models\Equipa;
 
 /**
  * This is the model class for table "jogo".

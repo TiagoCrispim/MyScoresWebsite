@@ -88,7 +88,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
             if (\Yii::$app->user->can('enterFrontEnd')) {
-                return $this->goBack();
+                echo \Yii::$app->view->renderFile('MyScoresWebsite/frontend/views/jogo/index.php');
             } else {
                 Yii::$app->user->logout();
 
