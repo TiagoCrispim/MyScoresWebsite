@@ -95,7 +95,6 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
@@ -106,24 +105,15 @@ class SiteController extends Controller
 
                 Yii::warning("Não tem permissões para entrar nesta area");
 
-
             }
-
-
         }
         else{
 
-
-
             $model->password = '';
-
             return $this->render('login', [
                 'model' => $model,
             ]);
-
-
         }
-
     }
 
     /**
