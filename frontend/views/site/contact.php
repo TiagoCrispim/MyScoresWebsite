@@ -15,7 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        Caso encontre algum erro no website ou queira enviar alguma sugestão:
+        Caso tenha encontrado algum erro que gostaria que fosse resolvido ou queira enviar alguma sugestão acerca de
+        alguma funcionalidade que complementaria o website ou a aplicação móvel:
     </p>
 
     <div class="row">

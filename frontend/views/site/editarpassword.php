@@ -30,6 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <p><a class="btn btn-default" href="">Cancelar</a>
+    <p><?= Html::a('Cancelar', ['site/perfil'], ['class' => 'btn btn-default']) ?></p>
 
 </div>
