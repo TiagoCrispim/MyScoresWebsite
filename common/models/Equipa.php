@@ -10,6 +10,7 @@ use Yii;
  *
  * @property int $id
  * @property int $id_jogo
+ * @property int $id_criador
  * @property int $id_jogador1
  * @property int $id_jogador2
  * @property int $id_jogador3
@@ -50,6 +51,7 @@ class Equipa extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_jogo' => 'Id Jogo',
+            'id_criador' => 'Id Criador',
             'id_jogador1' => 'Id Jogador1',
             'id_jogador2' => 'Id Jogador2',
             'id_jogador3' => 'Id Jogador3',
