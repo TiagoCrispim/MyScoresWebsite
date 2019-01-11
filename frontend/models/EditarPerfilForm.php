@@ -24,27 +24,38 @@ class EditarPerfilForm extends Model
     {
         return [
             ['username', 'trim'],
-            ['username', 'required'],
+            ['username', 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['nome', 'trim'],
-            ['nome', 'required'],
+            ['nome', 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
             ['nome', 'string', 'min' => 5, 'max' => 255],
 
             ['email', 'trim'],
-            ['email', 'required'],
+            ['email', 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
 
             ['dataNascimento', 'date', 'format' => 'php:Y-m-d'],
             ['dataNascimento', 'trim'],
-            ['dataNascimento', 'required'],
+            ['dataNascimento', 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
 
             ['nacionalidade', 'trim'],
-            ['nacionalidade', 'required'],
+            ['nacionalidade', 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
             ['nacionalidade', 'string', 'min'=> 2, 'max' => 255],
+        ];
+    }
+
+    //para descrever os atributos a preencher em cada input
+    public function attributeLabels(){
+        return [
+            'username'=>'Username:',
+            'nome'=>'Nome:',
+            'email'=>'Email:',
+            'dataNascimento'=>'Data de Nascimento:',
+            'nacionalidade'=>'Nacionalidade:',
         ];
     }
 

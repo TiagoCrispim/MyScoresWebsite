@@ -25,34 +25,47 @@ class SignupForm extends Model
     {
         return [
             ['username', 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
+            ['username', 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este username já está a ser utilizado.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['nome', 'trim'],
-            ['nome', 'required'],
+            ['nome', 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
             ['nome', 'string', 'min' => 5, 'max' => 255],
 
             ['email', 'trim'],
-            ['email', 'required'],
+            ['email', 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este email já está a ser utilizado.'],
 
             ['dataNascimento', 'date', 'format' => 'php:Y-m-d'],
             ['dataNascimento', 'trim'],
-            ['dataNascimento', 'required'],
+            ['dataNascimento', 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
 
             ['nacionalidade', 'trim'],
-            ['nacionalidade', 'required'],
+            ['nacionalidade', 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
             ['nacionalidade', 'string', 'min'=> 2, 'max' => 255],
 
-            ['password', 'required'],
+            ['password', 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
             ['password', 'string', 'min' => 6],
 
-            ['confirmacaoPassword', 'required'],
+            ['confirmacaoPassword', 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
             ['confirmacaoPassword', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match"],
             ['confirmacaoPassword', 'string', 'min' => 6],
+        ];
+    }
+
+    //para descrever os atributos a preencher em cada input
+    public function attributeLabels(){
+        return [
+            'username'=>'Username:',
+            'nome'=>'Nome:',
+            'email'=>'Email:',
+            'dataNascimento'=>'Data de Nascimento:',
+            'nacionalidade'=>'Nacionalidade:',
+            'password'=>'Palavra-passe:',
+            'confirmacaoPassword'=>'Confirmação de Palavra-passe:',
         ];
     }
 
