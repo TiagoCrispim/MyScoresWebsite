@@ -39,7 +39,7 @@ class Equipa extends \yii\db\ActiveRecord
     {
         return [
             [['id_jogo', 'id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5'], 'required'],
-            [['id_jogo', 'id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5', 'id_jogador6', 'id_jogador7', 'id_jogador8', 'id_jogador9', 'id_jogador10'], 'integer'],
+            [['id_jogo', 'id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5', 'id_jogador6', 'id_jogador7', 'id_jogador8', 'id_jogador9', 'id_jogador10'], 'string'],
         ];
     }
 
@@ -52,16 +52,16 @@ class Equipa extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_jogo' => 'Id Jogo',
             'id_criador' => 'Id Criador',
-            'id_jogador1' => 'Id Jogador1',
-            'id_jogador2' => 'Id Jogador2',
-            'id_jogador3' => 'Id Jogador3',
-            'id_jogador4' => 'Id Jogador4',
-            'id_jogador5' => 'Id Jogador5',
-            'id_jogador6' => 'Id Jogador6',
-            'id_jogador7' => 'Id Jogador7',
-            'id_jogador8' => 'Id Jogador8',
-            'id_jogador9' => 'Id Jogador9',
-            'id_jogador10' => 'Id Jogador10',
+            'id_jogador1' => 'jogador1',
+            'id_jogador2' => 'jogador2',
+            'id_jogador3' => 'jogador3',
+            'id_jogador4' => 'jogador4',
+            'id_jogador5' => 'jogador5',
+            'id_jogador6' => 'jogador6',
+            'id_jogador7' => 'jogador7',
+            'id_jogador8' => 'jogador8',
+            'id_jogador9' => 'jogador9',
+            'id_jogador10' => 'jogador10',
         ];
     }
 

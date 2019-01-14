@@ -14,7 +14,7 @@ $this->title = 'Home';
                 <h2>Criar Jogo</h2>
 
 
-                <p><?= Html::a('Criar Jogo', ['jogo/index'], ['class' => 'btn btn-default']) ?></p>
+                <p><?= Html::a('Criar Jogo', ['criar-jogo/criarequipa'], ['class' => 'btn btn-default']) ?></p>
             </div>
             <div class="col-lg-6">
                 <h2>Entre</h2>
