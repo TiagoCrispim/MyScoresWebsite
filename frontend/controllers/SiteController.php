@@ -37,7 +37,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout', 'perfil', 'editarperfil', 'home'],
+                        'actions' => ['logout', 'perfil', 'editarperfil', 'home', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -75,7 +75,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if(Yii::$app->user->isGuest){
+            return $this->render('index');
+        } else {
+            return $this->render('home');
+        }
     }
 
     /**
@@ -172,7 +176,7 @@ class SiteController extends Controller
     {
         $model = new EditarPerfilForm();
         if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->validadePassword()) {
+            if ($user = $model->guardardados()) {
                 $user = Yii::$app->user->identity ;
                 return $this->render('perfil', ['user' => $user]);
             }
