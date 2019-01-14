@@ -44,15 +44,16 @@ class EditarPasswordForm extends Model
         ];
     }
 
-    public function verificarPassword($atualPassword)
+    public function verificarPassword()
     {
         if (!$this->hasErrors()) {
-            $user = $this->getUser();
+            $user = Yii::$app->user->identity;
             if (!$user->validatePassword($this->atualPassword)) {
-                $this->addError($atualPassword, 'Incorrect password.');
+                $this->addError('atualPassword', 'Incorrect password.');
+                return false;
             } else {
                 $user->setPassword($this->password);
-                return $user->save(false) ? $user : null;
+                return true;
             }
         }
     }
@@ -64,14 +65,11 @@ class EditarPasswordForm extends Model
      */
     public function guardardados()
     {
-        if ($this->validate()) {
+        if ($this->verificarPassword()) {
             $user = Yii::$app->user->identity;
             $user->setPassword($this->password);
-
-
             return $user->save(false) ? $user : null;
         }
-
         return false;
 
     }

@@ -66,17 +66,19 @@ class EditarPerfilForm extends Model
      */
     public function guardardados()
     {
+        $user = Yii::$app->user->identity;
         if (!$this->validate()) {
-            return null;
+            if(!$user->email === $this->email){
+                return null;
+            }
         }
 
-        $user = Yii::$app->user->identity;
         $user->username = $this->username;
         $user->nome = $this->nome;
         $user->email = $this->email;
         $user->dataNascimento = $this->dataNascimento;
         $user->nacionalidade = $this->nacionalidade;
-        
+
         return $user->save(false) ? $user : null;
     }
 }

@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
-            <?= $form->field($model, 'username') ?>
+            <?= $form->field($model, 'username')->textInput(['readonly'=> true]) ?>
 
             <?= $form->field($model, 'nome') ?>
 
