@@ -50,6 +50,9 @@ class EditarPasswordForm extends Model
             $user = $this->getUser();
             if (!$user->validatePassword($this->atualPassword)) {
                 $this->addError($atualPassword, 'Incorrect password.');
+            } else {
+                $user->setPassword($this->password);
+                return $user->save(false) ? $user : null;
             }
         }
     }
@@ -70,7 +73,6 @@ class EditarPasswordForm extends Model
         }
 
         return false;
-
 
     }
 }
