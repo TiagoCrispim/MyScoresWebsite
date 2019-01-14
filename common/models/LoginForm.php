@@ -23,11 +23,19 @@ class LoginForm extends Model
     {
         return [
             // username and password are both required
-            [['username', 'password'], 'required'],
+            [['username', 'password'], 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+        ];
+    }
+
+    //para descrever os atributos a preencher em cada input
+    public function attributeLabels(){
+        return [
+            'username'=>'Username:',
+            'password'=>'Palavra-passe:',
         ];
     }
 

@@ -172,7 +172,7 @@ class SiteController extends Controller
     {
         $model = new EditarPerfilForm();
         if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->guardardados()) {
+            if ($user = $model->validadePassword()) {
                 $user = Yii::$app->user->identity ;
                 return $this->render('perfil', ['user' => $user]);
             }
