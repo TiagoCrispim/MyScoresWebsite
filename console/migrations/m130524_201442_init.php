@@ -54,7 +54,7 @@ class m130524_201442_init extends Migration
          */
         $this->createTable('{{%equipa}}', [
             'id' => $this->primaryKey(),
-            'id_jogo' => $this->integer()->notNull(),
+            'nome' => $this->string()->notNull()->defaultValue("Equipa"),
             'id_criador' => $this->integer()->notNull(),
             'id_jogador1' => $this->integer()->notNull(),
             'id_jogador2' => $this->integer()->notNull(),
