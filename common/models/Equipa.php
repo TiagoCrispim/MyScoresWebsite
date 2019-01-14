@@ -67,11 +67,11 @@ class Equipa extends \yii\db\ActiveRecord
 
     /**
      * relação da tabela equipa com a tabela jogo
-     */
+
     public function getJogo()
     {
         return $this->hasOne(Jogo::classname(),['id'=>'id_jogo']);
-    }
+    }*/
 
     /**
      * relação da tabela equipa com a tabela user (jogadores/utilizadores)
