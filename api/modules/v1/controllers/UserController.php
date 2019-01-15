@@ -3,6 +3,7 @@
 namespace api\modules\v1\controllers;
 
 use Yii;
+use yii\filters\auth\HttpBasicAuth;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
