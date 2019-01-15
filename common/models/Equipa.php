@@ -9,7 +9,7 @@ use Yii;
  * This is the model class for table "equipa".
  *
  * @property int $id
- * @property int $id_jogo
+ * @property string nome
  * @property int $id_criador
  * @property int $id_jogador1
  * @property int $id_jogador2
@@ -38,8 +38,8 @@ class Equipa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_jogo', 'id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5'], 'required'],
-            [['id_jogo', 'id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5', 'id_jogador6', 'id_jogador7', 'id_jogador8', 'id_jogador9', 'id_jogador10'], 'string'],
+            [['nome','id_criador','id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5'], 'required'],
+            //[['id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5', 'id_jogador6', 'id_jogador7', 'id_jogador8', 'id_jogador9', 'id_jogador10']],
         ];
     }
 
@@ -50,7 +50,7 @@ class Equipa extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_jogo' => 'Id Jogo',
+            //'id_jogo' => 'Id Jogo',
             'id_criador' => 'Id Criador',
             'id_jogador1' => 'jogador1',
             'id_jogador2' => 'jogador2',

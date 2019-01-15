@@ -2,7 +2,9 @@
 
 namespace frontend\controllers;
 use common\models\Equipa;
+use common\models\Jogo;
 use common\models\User;
+use yii\db\Query;
 use Yii;
 use yii\web\Request;
 
@@ -79,8 +81,22 @@ class CriarJogoController extends \yii\web\Controller
 
             $criador=Yii::$app->user->getId();
             $model->id_criador= $criador;
-            var_dump($model->save());
+            $model->nome = 'equipa1';
+            //$model->id = 1;
+            $model->load($model);
+            //var_dump($model->save());
             $model->save();
+
+
+
+
+            return var_dump($nome);
+
+
+
+                             //$equipa2 = Equipa::findBySql($equipa1)->one();
+
+            //return var_dump($equipa1);
             //return json_encode($model->id_criador);
 
 
@@ -102,6 +118,32 @@ class CriarJogoController extends \yii\web\Controller
 
 
     public function actionCriarjogo(){
+
+        $model= new Jogo();
+        $id_criador=Yii::$app->user->getId();
+        $equipas=Equipa::findBySql('SELECT * FROM equipa WHERE id_criador='.$id_criador.' ORDER BY ID DESC LIMIT 2')->all();
+        $equipa1=$equipas[0];
+        $equipa2=$equipas[1];
+        $nome1=$equipa1->nome;
+        $nome2=$equipa2->nome;
+
+
+
+        if (Yii::$app->request->isPost){
+
+        }else{
+
+
+
+
+            return $this->render('_jogoform', [
+
+                'equipa1'=> $nome1,
+                'equipa2'=> $nome2,
+                'model' => $model]
+            );
+
+        }
 
     }
 
