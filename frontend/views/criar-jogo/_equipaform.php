@@ -20,6 +20,8 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
 
+    <?= $form->field($model, 'nome')->textInput() ?>
+
     <?= $form->field($model, 'id_jogador1')->textInput() ?>
 
     <?= $form->field($model, 'id_jogador2')->textInput() ?>

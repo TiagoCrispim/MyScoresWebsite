@@ -9,7 +9,7 @@ use Yii;
  * This is the model class for table "equipa".
  *
  * @property int $id
- * @property string nome
+ * @property string $nome
  * @property int $id_criador
  * @property int $id_jogador1
  * @property int $id_jogador2
@@ -50,7 +50,7 @@ class Equipa extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            //'id_jogo' => 'Id Jogo',
+            'nome' => 'Nome da Equipa (Opcional)',
             'id_criador' => 'Id Criador',
             'id_jogador1' => 'jogador1',
             'id_jogador2' => 'jogador2',
