@@ -38,7 +38,7 @@ class Equipa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome','id_criador','id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5'], 'required'],
+            [['nome','id_criador','id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5'], 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
             //[['id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5', 'id_jogador6', 'id_jogador7', 'id_jogador8', 'id_jogador9', 'id_jogador10']],
         ];
     }
@@ -50,18 +50,18 @@ class Equipa extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'nome' => 'Nome da Equipa (Opcional)',
+            'nome' => 'Nome da Equipa (Opcional):',
             'id_criador' => 'Id Criador',
-            'id_jogador1' => 'jogador1',
-            'id_jogador2' => 'jogador2',
-            'id_jogador3' => 'jogador3',
-            'id_jogador4' => 'jogador4',
-            'id_jogador5' => 'jogador5',
-            'id_jogador6' => 'jogador6',
-            'id_jogador7' => 'jogador7',
-            'id_jogador8' => 'jogador8',
-            'id_jogador9' => 'jogador9',
-            'id_jogador10' => 'jogador10',
+            'id_jogador1' => 'Username do Jodagor 1:',
+            'id_jogador2' => 'Username do Jodagor 2:',
+            'id_jogador3' => 'Username do Jodagor 3:',
+            'id_jogador4' => 'Username do Jodagor 4:',
+            'id_jogador5' => 'Username do Jodagor 5:',
+            'id_jogador6' => 'Username do Jodagor 6:',
+            'id_jogador7' => 'Username do Jodagor 7:',
+            'id_jogador8' => 'Username do Jodagor 8:',
+            'id_jogador9' => 'Username do Jodagor 9:',
+            'id_jogador10' => 'Username do Jodagor 10:',
         ];
     }
 
