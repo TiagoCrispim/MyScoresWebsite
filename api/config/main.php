@@ -42,7 +42,7 @@ return [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['v1/jogo', 'v1/user', 'v1/equipa', 'v1/golosjogo', 'v1/default'],
+                    'controller' => ['v1/jogo', 'v1/user', 'v1/equipa', 'v1/golosjogo'],
                     'tokens' => [
                         '{id}' => '<id:\\w+>'
                     ]
