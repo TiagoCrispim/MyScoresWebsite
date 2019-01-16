@@ -19,10 +19,13 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'id_jogador')->textInput() ?>
+    <?= $form->field($model, 'golosMarcados')->textInput() ?>
+    <?= $form->field($model, 'id_jogador')->textInput() ?>
+    <?= $form->field($model, 'golosMarcados')->textInput() ?>
+    <?= $form->field($model, 'id_jogador')->textInput() ?>
+    <?= $form->field($model, 'golosMarcados')->textInput() ?>
 
-    <?= $form->field($model, 'id_jogo')->textInput() ?>
 
-    <?= $form->field($model, 'golos_marcados')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

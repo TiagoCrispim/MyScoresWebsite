@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 use common\models\Equipa;
+use common\models\GolosJogo;
 use common\models\Jogo;
 use common\models\User;
 use yii\db\Query;
@@ -78,7 +79,6 @@ class CriarJogoController extends \yii\web\Controller
 
             }
 
-
             $criador=Yii::$app->user->getId();
             $model->id_criador= $criador;
             $model->nome = 'equipa1';
@@ -89,8 +89,6 @@ class CriarJogoController extends \yii\web\Controller
 
 
 
-
-            return var_dump($nome);
 
 
 
@@ -120,6 +118,7 @@ class CriarJogoController extends \yii\web\Controller
     public function actionCriarjogo(){
 
         $model= new Jogo();
+
         $id_criador=Yii::$app->user->getId();
         $equipas=Equipa::findBySql('SELECT * FROM equipa WHERE id_criador='.$id_criador.' ORDER BY ID DESC LIMIT 2')->all();
         $equipa1=$equipas[0];
@@ -140,12 +139,36 @@ class CriarJogoController extends \yii\web\Controller
 
                 'equipa1'=> $nome1,
                 'equipa2'=> $nome2,
-                'model' => $model]
+                'model' => $model
+                ]
             );
 
         }
 
+
     }
 
 
+
+    public  function actionTeste(){
+
+        $model= new GolosJogo();
+        $model2= new GolosJogo();
+        $model3=new GolosJogo();
+
+        if (Yii::$app->request->isPost){
+
+            var_dump(Yii::$app->request->bodyParams);
+
+
+        }else {
+            return $this->render('_golosjogoform', [
+
+                'model' => $model,
+
+
+            ]);
+        }
+
+    }
 }
