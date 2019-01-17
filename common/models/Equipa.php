@@ -38,8 +38,8 @@ class Equipa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome','id_criador','id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5'], 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
-            //[['id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5', 'id_jogador6', 'id_jogador7', 'id_jogador8', 'id_jogador9', 'id_jogador10']],
+            [['nome','id_criador'], 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
+
         ];
     }
 
@@ -52,16 +52,7 @@ class Equipa extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nome' => 'Nome da Equipa (Opcional):',
             'id_criador' => 'Id Criador',
-            'id_jogador1' => 'Username do Jodagor 1:',
-            'id_jogador2' => 'Username do Jodagor 2:',
-            'id_jogador3' => 'Username do Jodagor 3:',
-            'id_jogador4' => 'Username do Jodagor 4:',
-            'id_jogador5' => 'Username do Jodagor 5:',
-            'id_jogador6' => 'Username do Jodagor 6:',
-            'id_jogador7' => 'Username do Jodagor 7:',
-            'id_jogador8' => 'Username do Jodagor 8:',
-            'id_jogador9' => 'Username do Jodagor 9:',
-            'id_jogador10' => 'Username do Jodagor 10:',
+
         ];
     }
 
@@ -76,8 +67,9 @@ class Equipa extends \yii\db\ActiveRecord
     /**
      * relação da tabela equipa com a tabela user (jogadores/utilizadores)
      */
-    public function getJogadores()
+    public function getUser()
     {
-        return $this->hasMany(User::classname(),['id'=>'id_jogador']);
+        return $this->hasMany(Equipa::classname(),['id'=>'id_user'])
+            ->viaTable('equipa_user',['id_equipa'=>'id']);
     }
 }

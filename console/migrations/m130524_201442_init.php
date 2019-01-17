@@ -34,18 +34,7 @@ class m130524_201442_init extends Migration
         $this->createTable('{{%equipa}}', [
             'id' => $this->primaryKey(),
             'nome' => $this->string()->notNull()->defaultValue("Equipa"),
-
             'id_criador' => $this->integer()->notNull(),
-            'id_jogador1' => $this->integer()->notNull(),
-            'id_jogador2' => $this->integer()->notNull(),
-            'id_jogador3' => $this->integer()->notNull(),
-            'id_jogador4' => $this->integer()->notNull(),
-            'id_jogador5' => $this->integer()->notNull(),
-            'id_jogador6' => $this->integer(),
-            'id_jogador7' => $this->integer(),
-            'id_jogador8' => $this->integer(),
-            'id_jogador9' => $this->integer(),
-            'id_jogador10' => $this->integer(),
         ], $tableOptions);
         /**
          * Tabela Jogo da Base de Dados.
@@ -63,9 +52,25 @@ class m130524_201442_init extends Migration
          */
         $this->createTable('{{%golos_jogo}}', [
             'id' => $this->primaryKey(),
-            'id_jogador' => $this->integer()->notNull(),
+            'id_user' => $this->integer()->notNull(),
             'id_equipa' => $this->integer()->notNull(),
             'golosMarcados' => $this->integer(2)->notNull(),
+        ], $tableOptions);
+        /**
+        * Tabela Equipa_user da Base de Dados.
+         */
+        $this->createTable('{{%equipaUser}}', [
+            'id' => $this->primaryKey(),
+            'id_user' => $this->integer()->notNull(),
+            'id_equipa' => $this->integer()->notNull(),
+        ], $tableOptions);
+        /**
+         * Tabela Sugestao da Base de Dados.
+         */
+        $this->createTable('{{%sugestao}}', [
+            'id' => $this->primaryKey(),
+            'id_user' => $this->integer()->notNull(),
+            'mensagem' => $this->string()->notNull(),
         ], $tableOptions);
     }
 

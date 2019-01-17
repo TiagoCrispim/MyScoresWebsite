@@ -4,17 +4,16 @@ namespace frontend\models;
 
 use Yii;
 use yii\base\Model;
+use yii\swiftmailer\Message;
 
 /**
  * ContactForm is the model behind the contact form.
  */
 class ContactForm extends Model
 {
-    public $name;
-    public $email;
-    public $subject;
-    public $body;
-    public $verifyCode;
+    public $mensagem;
+    public $id_user;
+
 
 
     /**
@@ -24,11 +23,7 @@ class ContactForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
-            // email has to be a valid email address
-            ['email', 'email'],
-            // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+            [['mensagem'], 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
         ];
     }
 
@@ -38,7 +33,7 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'mensagem' => 'Mensagem:',
         ];
     }
 

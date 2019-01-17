@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 use common\models\Equipa;
+use common\models\EquipaUser;
 use common\models\GolosJogo;
 use common\models\Jogo;
 use common\models\User;
@@ -22,6 +23,8 @@ class CriarJogoController extends \yii\web\Controller
 
 
         $model = new Equipa();
+        $modeljogadores = [new EquipaUser(), new EquipaUser(), new EquipaUser(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
+
 
         if (Yii::$app->request->isPost){
 
