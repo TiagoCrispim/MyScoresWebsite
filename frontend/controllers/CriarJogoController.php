@@ -12,6 +12,7 @@ use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\Request;
 
+
 class CriarJogoController extends \yii\web\Controller
 {
     public function actionIndex(){
@@ -23,21 +24,45 @@ class CriarJogoController extends \yii\web\Controller
 
 
         $model = new Equipa();
-        $modeljogadores = [new EquipaUser(), new EquipaUser(), new EquipaUser(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
+        $modeljogadores = [new EquipaUser(), new EquipaUser(), new EquipaUser(),new EquipaUser(),new EquipaUser(),new EquipaUser(),new EquipaUser(),new EquipaUser(),new EquipaUser(),new EquipaUser()];
 
 
-        if (Yii::$app->request->isPost){
+        if (Yii::$app->request->isPost && Model::loadMultiple($modeljogadores, Yii::$app->request->post())){
+            $datajogadores=Yii::$app->request->bodyParams['EquipaUser'];
 
-            $data = Yii::$app->request->bodyParams['Equipa'];
+            foreach ($datajogadores as $index=>$jogadores){
+                if (empty($jogadores['id_user'])) {
+                    unset($datajogadores[$index]);
+                }
 
-            $model->nome= $data['nome'];
+            }
 
-            for($i = 1;$i < count($data);$i++){
+               if(count($datajogadores)>=5) {
+
+                    $data = Yii::$app->request->bodyParams['Equipa'];
+                    $model->nome = $data['nome'];
+                    $criador = Yii::$app->user->getId();
+                    $model->id_criador = $criador;
+                    $model->load($model);
+                    $model->save();
+
+/*
+                    foreach ($datajogadores as $index => $jogadores) {
+
+
+                    }*/
+                }else{
+
+
+               }
+
+
+/*            for($i = 1;$i < count($data);$i++){*/
 
 
                 //return var_dump(Yii::$app->request->bodyParams['Equipa']);
                 //return json_encode($data['id_jogador'.$i]);
-                $username= $data['id_jogador'.$i];
+/*                $username= $data['id_jogador'.$i];
                 $user = User::findByUsername($username);
                 switch ($i){
                     case 1:
@@ -85,40 +110,21 @@ class CriarJogoController extends \yii\web\Controller
                         echo "error";
                 }
 
-            }
-
-            $criador=Yii::$app->user->getId();
-            $model->id_criador= $criador;
-            //$model->nome = 'equipa1';
-            //$model->id = 1;
-            $model->load($model);
-            //var_dump($model->save());
-            $model->save();
-
-
-
-
-
-
-                             //$equipa2 = Equipa::findBySql($equipa1)->one();
-
-            //return var_dump($equipa1);
-            //return json_encode($model->id_criador);
-
-
-
-            // return var_dump(Yii::$app->request->bodyParams['Equipa']);
-
-
-           /* foreach (Yii::$app->request->bodyParams['Equipa'] as ){
-
             }*/
-            //return var_dump($model);
+
+
+
+
+
+
+
+
 
 
         }else {
             return $this->render('_equipaform', [
-                'model' => $model]);
+                'model' => $model,
+                'modeljogadores'=>$modeljogadores]);
         }
     }
 

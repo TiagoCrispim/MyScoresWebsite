@@ -29,8 +29,8 @@ class EquipaUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'id_equipa'], 'required'],
-            [['id_user', 'id_equipa'], 'integer'],
+            [['id_equipa'], 'required','message'=>'Este campo não ser deixado em branco'],
+            [['id_equipa'], 'integer'],
         ];
     }
 
@@ -41,7 +41,7 @@ class EquipaUser extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_user' => 'Id Jogador',
+            'id_user' => 'Username:',
             'id_jogo' => 'Id Jogo',
 
         ];
