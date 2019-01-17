@@ -35,3 +35,5 @@ phpunit.phar
 /.vagrant
 api/runtime/debug/5c372e83e52bc.data
 api/runtime/debug/5c372e924353d.data
+api/runtime/debug/index.data
+api/runtime/debug/index.data

@@ -10,22 +10,20 @@ $this->title = 'Home';
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-6">
-                <h2>Criar Jogo</h2>
+            <div class="col-lg-9">
+                <h3>Registo de Jogos:</h3>
 
+                <p>Ainda não existem registos</p>
 
-<<<<<<< HEAD
                 <p><?= Html::a('Criar Jogo', ['criar-jogo/index'], ['class' => 'btn btn-default']) ?></p>
-=======
-                <p><?= Html::a('Criar Jogo', ['criar-jogo/criarequipa'], ['class' => 'btn btn-default']) ?></p>
->>>>>>> 85dc6465e88e037050af5e303dee4d3e3e8561ed
-            </div>
-            <div class="col-lg-6">
-                <h2>Entre</h2>
-
-                <p>Texto aleatorio</p>
 
             </div>
+            <div class="col-lg-3">
+                <h3>Páginas</h3>
+              
+                <p><?= Html::a('Criar Jogo', ['jogo/index'], ['class' => 'btn btn-default']) ?></p>
+            </div>
+
         </div>
 
     </div>

@@ -13,20 +13,28 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>Faça as alterações que pretende e guarde as alterações:</p>
 
+    <!-- Para sacar as informações atuais do utilizador e poder mostrar fields -->
+    <?php
+        $model->username = Yii::$app->user->identity->username;
+        $model->nome = Yii::$app->user->identity->nome;
+        $model->email = Yii::$app->user->identity->email;
+        $model->dataNascimento = Yii::$app->user->identity->dataNascimento;
+        $model->nacionalidade = Yii::$app->user->identity->nacionalidade;
+
+    ?>
+
     <div class="row">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
-            <p>Nome:</p>
-            <?= $form->field($model, 'nome')->hint(Yii::$app->user->identity->username) ?>
+            <?= $form->field($model, 'username')->textInput(['readonly'=> true]) ?>
 
-            <p>Email:</p>
-            <?= $form->field($model, 'email')->hint(Yii::$app->user->identity->email) ?>
+            <?= $form->field($model, 'nome') ?>
 
-            <p>Data de Nascimento:</p>
-            <?= $form->field($model, 'dataNascimento')->hint(Yii::$app->user->identity->dataNascimento) ?>
+            <?= $form->field($model, 'email') ?>
 
-            <p>Nacionalidade:</p>
+            <?= $form->field($model, 'dataNascimento') ?>
+
             <?php $countries = array(
                 'Afghanistan' => 'Afghanistan',
                 'Albania' => 'Albania',
@@ -178,33 +186,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'nacionalidade')->dropDownList($countries,['prompt'=>'Select']); ?>
 
-            <?= $form->field($model, 'password')->passwordInput() ?>
-
-            <?= $form->field($model, 'confirmacaoPassword')->passwordInput() ?>
-
             <div class="form-group">
-                <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                <?= Html::submitButton('Guardar Alterações', ['class' => 'btn btn-primary', 'name' => 'guardaralteracoes-button']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
         </div>
     </div>
 
-    <p>Username:</p>
-    <p><?= Yii::$app->user->identity->username ?></p>
-    <p>Nome:</p>
-    <p><?= Yii::$app->user->identity->nome ?></p>
-
-    <p><?= Yii::$app->user->identity->email ?></p>
-    <p>Data de Nascimento:</p>
-    <p><?= Yii::$app->user->identity->dataNascimento ?></p>
-    <p>Nacionalidade:</p>
-    <p><?= Yii::$app->user->identity->nacionalidade ?></p>
-    <p>Golos Marcados:</p>
-    <p><?= Yii::$app->user->identity->golosMarcados ?></p>
-    <p>Jogos Jogados:</p>
-    <p><?= Yii::$app->user->identity->jogosJogados ?></p>
-
-    <p><a class="btn btn-default" href="">Cancelar</a><a class="btn btn-default" href="">Guardar Alterações</a></p>
+    <p><?= Html::a('Cancelar', ['site/perfil'], ['class' => 'btn btn-default']) ?></p>
 
 </div>

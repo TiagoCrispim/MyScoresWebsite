@@ -2,6 +2,8 @@
 namespace frontend\controllers;
 
 use common\models\User;
+use frontend\models\EditarPasswordForm;
+use frontend\models\EditarPerfilForm;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -27,15 +29,15 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['logout', 'signup', 'perfil', 'editarperfil', 'login', 'home', 'index'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['signup', 'login', 'index'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'perfil', 'editarperfil', 'home', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -73,7 +75,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if(Yii::$app->user->isGuest){
+            return $this->render('index');
+        } else {
+            return $this->render('home');
+        }
     }
 
     /**
@@ -93,7 +99,6 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
@@ -104,24 +109,15 @@ class SiteController extends Controller
 
                 Yii::warning("Não tem permissões para entrar nesta area");
 
-
             }
-
-
         }
         else{
 
-
-
             $model->password = '';
-
             return $this->render('login', [
                 'model' => $model,
             ]);
-
-
         }
-
     }
 
     /**
@@ -166,8 +162,9 @@ class SiteController extends Controller
      */
     public function actionPerfil()
     {
-        $model = User::findOne(['id'=>'$id']);
-        return $this->render('perfil', ['model'=>$model]);
+        //$user corresponde ao utilizador com  sessão inciciada
+        $user = Yii::$app->user->identity ;
+        return $this->render('perfil', ['user'=>$user]);
     }
 
     /**
@@ -177,8 +174,33 @@ class SiteController extends Controller
      */
     public function actionEditarperfil()
     {
-        $model = User::findOne(['id'=>'$id']);
-        return $this->render('editarperfil');
+        $model = new EditarPerfilForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->guardardados()) {
+                $user = Yii::$app->user->identity ;
+                return $this->render('perfil', ['user' => $user]);
+            }
+        }
+
+        return $this->render('editarperfil', ['model' => $model]);
+    }
+
+    /**
+     * Displays editarperfil page.
+     *
+     * @return mixed
+     */
+    public function actionEditarpassword()
+    {
+        $model = new EditarPasswordForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->guardardados()) {
+                $user = Yii::$app->user->identity ;
+                return $this->render('perfil', ['user' => $user]);
+            }
+        }
+
+        return $this->render('editarpassword', ['model' => $model]);
     }
 
     /**
