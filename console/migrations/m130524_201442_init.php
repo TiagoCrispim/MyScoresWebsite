@@ -34,7 +34,8 @@ class m130524_201442_init extends Migration
         $this->createTable('{{%equipa}}', [
             'id' => $this->primaryKey(),
             'nome' => $this->string()->notNull()->defaultValue("Equipa"),
-            'id_jogo' => $this->integer()->notNull(),
+
+            'id_criador' => $this->integer()->notNull(),
             'id_jogador1' => $this->integer()->notNull(),
             'id_jogador2' => $this->integer()->notNull(),
             'id_jogador3' => $this->integer()->notNull(),
@@ -53,8 +54,6 @@ class m130524_201442_init extends Migration
             'id' => $this->primaryKey(),
             'id_equipa1' => $this->integer()->notNull(),
             'id_equipa2' => $this->integer()->notNull(),
-            'golosEquipa1' => $this->integer(2)->notNull(),
-            'golosEquipa2' => $this->integer(2)->notNull(),
             'data' => $this->date()->notNull(),
             'hora' => $this->time()->notNull(),
             'local' => $this->string()->notNull(),
@@ -65,7 +64,7 @@ class m130524_201442_init extends Migration
         $this->createTable('{{%golos_jogo}}', [
             'id' => $this->primaryKey(),
             'id_jogador' => $this->integer()->notNull(),
-            'id_jogo' => $this->integer()->notNull(),
+            'id_equipa' => $this->integer()->notNull(),
             'golosMarcados' => $this->integer(2)->notNull(),
         ], $tableOptions);
     }
