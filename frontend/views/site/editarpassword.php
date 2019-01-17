@@ -17,7 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'form-editpassword']); ?>
 
-            <p>Nova palavra passe:</p>
+            <?= $form->field($model, 'atualPassword')->passwordInput() ?>
+
             <?= $form->field($model, 'password')->passwordInput() ?>
 
             <?= $form->field($model, 'confirmacaoPassword')->passwordInput() ?>

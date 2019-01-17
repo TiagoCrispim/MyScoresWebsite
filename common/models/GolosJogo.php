@@ -11,7 +11,7 @@ use Yii;
  * @property int $id
  * @property int $id_jogador
  * @property int $id_jogo
- * @property int $golos_marcados
+ * @property int $golosMarcados
  */
 class GolosJogo extends \yii\db\ActiveRecord
 {
@@ -29,8 +29,8 @@ class GolosJogo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_jogador', 'id_jogo', 'golos_marcados'], 'required'],
-            [['id_jogador', 'id_jogo', 'golos_marcados'], 'integer'],
+            [['id_jogador', 'id_jogo', 'golosMarcados'], 'required'],
+            [['id_jogador', 'id_jogo', 'golosMarcados'], 'integer'],
         ];
     }
 
@@ -43,7 +43,7 @@ class GolosJogo extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_jogador' => 'Id Jogador',
             'id_jogo' => 'Id Jogo',
-            'golos_marcados' => 'Golos Marcados',
+            'golosMarcados' => 'Golos Marcados',
         ];
     }
 

@@ -9,7 +9,8 @@ use Yii;
  * This is the model class for table "equipa".
  *
  * @property int $id
- * @property int $id_jogo
+ * @property string $nome
+ * @property int $id_criador
  * @property int $id_jogador1
  * @property int $id_jogador2
  * @property int $id_jogador3
@@ -37,8 +38,8 @@ class Equipa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_jogo', 'id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5'], 'required'],
-            [['id_jogo', 'id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5', 'id_jogador6', 'id_jogador7', 'id_jogador8', 'id_jogador9', 'id_jogador10'], 'integer'],
+            [['nome','id_criador','id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5'], 'required', 'message' => 'Este campo não pode ser deixado em branco.'],
+            //[['id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5', 'id_jogador6', 'id_jogador7', 'id_jogador8', 'id_jogador9', 'id_jogador10']],
         ];
     }
 
@@ -49,27 +50,28 @@ class Equipa extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_jogo' => 'Id Jogo',
-            'id_jogador1' => 'Id Jogador1',
-            'id_jogador2' => 'Id Jogador2',
-            'id_jogador3' => 'Id Jogador3',
-            'id_jogador4' => 'Id Jogador4',
-            'id_jogador5' => 'Id Jogador5',
-            'id_jogador6' => 'Id Jogador6',
-            'id_jogador7' => 'Id Jogador7',
-            'id_jogador8' => 'Id Jogador8',
-            'id_jogador9' => 'Id Jogador9',
-            'id_jogador10' => 'Id Jogador10',
+            'nome' => 'Nome da Equipa (Opcional):',
+            'id_criador' => 'Id Criador',
+            'id_jogador1' => 'Username do Jodagor 1:',
+            'id_jogador2' => 'Username do Jodagor 2:',
+            'id_jogador3' => 'Username do Jodagor 3:',
+            'id_jogador4' => 'Username do Jodagor 4:',
+            'id_jogador5' => 'Username do Jodagor 5:',
+            'id_jogador6' => 'Username do Jodagor 6:',
+            'id_jogador7' => 'Username do Jodagor 7:',
+            'id_jogador8' => 'Username do Jodagor 8:',
+            'id_jogador9' => 'Username do Jodagor 9:',
+            'id_jogador10' => 'Username do Jodagor 10:',
         ];
     }
 
     /**
      * relação da tabela equipa com a tabela jogo
-     */
+
     public function getJogo()
     {
         return $this->hasOne(Jogo::classname(),['id'=>'id_jogo']);
-    }
+    }*/
 
     /**
      * relação da tabela equipa com a tabela user (jogadores/utilizadores)
