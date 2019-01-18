@@ -69,6 +69,7 @@ class SugestaoController extends Controller
             $model->id_user=Yii::$app->user->getId();
 
             $model->save();
+            Yii::$app->session->setFlash('success', 'Sugestão enviada com sucesso!');
 
             //return var_dump($sugestao);
 

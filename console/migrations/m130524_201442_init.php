@@ -59,7 +59,7 @@ class m130524_201442_init extends Migration
         /**
         * Tabela Equipa_user da Base de Dados.
          */
-        $this->createTable('{{%equipaUser}}', [
+        $this->createTable('{{%equipa_user}}', [
             'id' => $this->primaryKey(),
             'id_user' => $this->integer()->notNull(),
             'id_equipa' => $this->integer()->notNull(),
