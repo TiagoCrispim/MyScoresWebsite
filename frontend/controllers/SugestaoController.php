@@ -70,7 +70,7 @@ class SugestaoController extends Controller
 
             $model->save();
 
-            return var_dump($model);
+            //return var_dump($sugestao);
 
             
 
