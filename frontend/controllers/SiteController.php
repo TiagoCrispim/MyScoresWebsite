@@ -29,7 +29,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup', 'perfil', 'editarperfil', 'login', 'home', 'index', 'contact'],
+                'only' => ['logout', 'signup', 'perfil', 'editarperfil', 'login', 'home', 'index'],
                 'rules' => [
                     [
                         'actions' => ['signup', 'login', 'index'],
@@ -37,7 +37,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout', 'perfil', 'editarperfil', 'home', 'index', 'contact'],
+                        'actions' => ['logout', 'perfil', 'editarperfil', 'home', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -130,29 +130,6 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
-    }
-
-    /**
-     * Displays contact page.
-     *
-     * @return mixed
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
-            }
-
-            return $this->refresh();
-        } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
-        }
     }
 
     /**

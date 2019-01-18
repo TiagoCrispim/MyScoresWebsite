@@ -54,7 +54,7 @@ AppAsset::register($this);
         $menuItems = [
             ['label' => 'Home', 'url' => ['/site/home']],
             ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Contacto', 'url' => ['/sugestao/index']],
             ['label' => 'Perfil', 'url' => ['/site/perfil']],
         ];
 
