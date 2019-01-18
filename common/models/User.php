@@ -15,8 +15,6 @@ use app\models\Equipa;
  * @property string $username
  * @property string $nome
  * @property string $nacionalidade
- * @property integer $golosMarcados
- * @property integer $jogosJogados
  * @property \data $dataNascimento
  * @property string $password_hash
  * @property string $password_reset_token

@@ -45,8 +45,11 @@ return [
                     'controller' => ['v1/jogo', 'v1/user', 'v1/equipa', 'v1/golosjogo'],
                     'tokens' => [
                         '{id}' => '<id:\\w+>'
-                    ]
-
+                    ],
+                    'extraPatterns' => [
+                        'POST login' => 'login',
+                        'POST registo' => 'registo',
+                    ],
                 ]
             ],
         ]

@@ -17,14 +17,16 @@ use yii\web\IdentityInterface;
  * @property string $email
  * @property string $dataNascimento
  * @property string $nacionalidade
- * @property int $golosMarcados
- * @property int $jogosJogados
  * @property int $status
  * @property int $created_at
  * @property int $updated_at
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
+
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
+
     /**
      * {@inheritdoc}
      */
@@ -50,7 +52,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return [
             [['username', 'nome', 'auth_key', 'password_hash', 'email', 'dataNascimento', 'nacionalidade', 'created_at', 'updated_at'], 'required'],
             [['dataNascimento'], 'safe'],
-            [['golosMarcados', 'jogosJogados', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['status', 'created_at', 'updated_at'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
             [['nome'], 'string', 'max' => 100],
             [['auth_key'], 'string', 'max' => 32],
@@ -76,8 +78,6 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'email' => 'Email',
             'dataNascimento' => 'Data Nascimento',
             'nacionalidade' => 'Nacionalidade',
-            'golosMarcados' => 'Golos Marcados',
-            'jogosJogados' => 'Jogos Jogados',
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',

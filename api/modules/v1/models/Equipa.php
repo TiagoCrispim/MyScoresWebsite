@@ -8,7 +8,8 @@ use Yii;
  * This is the model class for table "equipa".
  *
  * @property int $id
- * @property int $id_jogo
+ * @property string $nome
+ * @property int $id_criador
  * @property int $id_jogador1
  * @property int $id_jogador2
  * @property int $id_jogador3
@@ -33,19 +34,12 @@ class Equipa extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public static function primaryKey()
-    {
-        return ['id'];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
-            [['id_jogo', 'id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5'], 'required'],
-            [['id_jogo', 'id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5', 'id_jogador6', 'id_jogador7', 'id_jogador8', 'id_jogador9', 'id_jogador10'], 'integer'],
+            [['id_criador', 'id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5'], 'required'],
+            [['id_criador', 'id_jogador1', 'id_jogador2', 'id_jogador3', 'id_jogador4', 'id_jogador5', 'id_jogador6', 'id_jogador7', 'id_jogador8', 'id_jogador9', 'id_jogador10'], 'integer'],
+            [['nome'], 'string', 'max' => 255],
         ];
     }
 
@@ -56,7 +50,8 @@ class Equipa extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_jogo' => 'Id Jogo',
+            'nome' => 'Nome',
+            'id_criador' => 'Id Criador',
             'id_jogador1' => 'Id Jogador1',
             'id_jogador2' => 'Id Jogador2',
             'id_jogador3' => 'Id Jogador3',
