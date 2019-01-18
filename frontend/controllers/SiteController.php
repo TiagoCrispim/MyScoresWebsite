@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\GolosJogo;
 use common\models\User;
 use frontend\models\EditarPasswordForm;
 use frontend\models\EditarPerfilForm;
@@ -140,8 +141,12 @@ class SiteController extends Controller
     public function actionPerfil()
     {
         //$user corresponde ao utilizador com  sessão inciciada
-        $user = Yii::$app->user->identity ;
-        return $this->render('perfil', ['user'=>$user]);
+        $user = Yii::$app->user->identity;
+        $userid = Yii::$app->user->getId();
+        $queryGolos = GolosJogo::find()->where(['id_user' => $userid]);
+        $golosM = $queryGolos->sum('golosMarcados');
+        $jogosJogados = $queryGolos->count();
+        return $this->render('perfil', ['user'=>$user, 'golosM' => $golosM, 'jogosJogados' => $jogosJogados]);
     }
 
     /**

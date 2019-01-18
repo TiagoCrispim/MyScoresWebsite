@@ -199,4 +199,9 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasMany(Equipa::classname(),['id'=>'id_equipa'])
             ->viaTable('equipa_user',['id_jogador'=>'id']);
     }
+
+    public function getGolosmarcados()
+    {
+        return $this->hasMany(GolosJogo::classname(),['id'=>'id_user']);
+    }
 }
