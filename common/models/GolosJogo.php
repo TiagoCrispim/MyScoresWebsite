@@ -60,6 +60,6 @@ class GolosJogo extends \yii\db\ActiveRecord
      */
     public function getJogador()
     {
-        return $this->hasOne(User::classname(),['id'=>'id_jogador']);
+        return $this->hasMany(User::classname(),['id'=>'id_jogador']);
     }
 }

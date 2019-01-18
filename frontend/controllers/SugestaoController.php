@@ -35,11 +35,6 @@ class SugestaoController extends Controller
                 'rules' => [
                     [
                         'actions' => ['index'],
-                        'allow' => false,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -69,8 +64,9 @@ class SugestaoController extends Controller
             $model->id_user=Yii::$app->user->getId();
 
             $model->save();
+            Yii::$app->session->setFlash('success', 'Sugestão enviada com sucesso!');
 
-            return var_dump($model);
+            //return var_dump($sugestao);
 
             
 
