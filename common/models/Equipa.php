@@ -69,7 +69,7 @@ class Equipa extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasMany(Equipa::classname(),['id'=>'id_user'])
-            ->viaTable('equipa_user',['id_equipa'=>'id']);
+        return $this->hasMany(\common\models\User::className(),['id'=>'id_equipa'])
+            ->viaTable(EquipaUser::tableName(),['id_user'=>'id']);
     }
 }
