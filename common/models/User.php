@@ -55,8 +55,39 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['username', 'nome', 'auth_key', 'password_hash', 'email', 'dataNascimento', 'nacionalidade', 'created_at', 'updated_at'], 'required'],
+            [['dataNascimento'], 'safe'],
+            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
+            [['nome'], 'string', 'max' => 100],
+            [['auth_key'], 'string', 'max' => 32],
+            [['nacionalidade'], 'string', 'max' => 20],
+            [['username'], 'unique'],
+            [['email'], 'unique'],
+            [['password_reset_token'], 'unique'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Username',
+            'nome' => 'Nome',
+            'auth_key' => 'Auth Key',
+            'password_hash' => 'Password Hash',
+            'password_reset_token' => 'Password Reset Token',
+            'email' => 'Email',
+            'dataNascimento' => 'Data Nascimento',
+            'nacionalidade' => 'Nacionalidade',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 

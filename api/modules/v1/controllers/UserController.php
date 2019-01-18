@@ -2,6 +2,7 @@
 
 namespace api\modules\v1\controllers;
 
+
 use common\models\User;
 use Yii;
 use yii\filters\auth\HttpBasicAuth;
@@ -10,10 +11,18 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\rest\ActiveController;
 
+/**
+ * @property mixed username
+ * @property mixed nome
+ * @property mixed dataNascimento
+ * @property mixed nacionalidade
+ * @property mixed password
+ * @property mixed email
+ */
 class UserController extends ActiveController
 {
 
-    public $modelClass = 'api\modules\v1\models\User';
+    public $modelClass = 'common\models\User';
 
     /*public function actionIndex()
     {
@@ -25,16 +34,9 @@ class UserController extends ActiveController
         $behaviors = parent::behaviors();
         $behaviors['authenticator']=[
             'class' => HttpBasicAuth::className(),
-            /*'compositeAuth' => [
-                'class' => CompositeAuth::className(),
-                    'authMethods' => [
-                        HttpBasicAuth::className(),
-                        QueryParamAuth::className(),
-                    ],
-            ],*/
             'auth' => function($username, $password)
             {
-                $user = \api\modules\v1\models\User::findByUsername($username);
+                $user = User::findByUsername($username);
                 if($user && $user->validatePassword($password))
                 {
                     return $user;
@@ -54,15 +56,13 @@ class UserController extends ActiveController
     }
 
     public function actionRegisto(){
-
-        $user= Yii::$app->request->post('user');
-
-       /* $user->username = $this->username;
+        $user = new User();
+        $user->username = $this->username;
         $user->nome = $this->nome;
         $user->dataNascimento = $this->dataNascimento;
         $user->email = $this->email;
-        $user->nacionalidade = $this->nacionalidade;*/
-        $user->setPassword($user->password);
+        $user->nacionalidade = $this->nacionalidade;
+        $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->save(false);
 
