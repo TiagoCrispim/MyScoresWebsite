@@ -46,14 +46,15 @@ class CriarJogoController extends \yii\web\Controller
                     $model->load($model);
                     $model->save();
 
-/*
+
                     foreach ($datajogadores as $index => $jogadores) {
 
 
-                    }*/
+
+                    }
                 }else{
-
-
+                    $teste='esta merda nao esta a meter os erros bem';
+                    return var_dump($teste);
                }
 
 

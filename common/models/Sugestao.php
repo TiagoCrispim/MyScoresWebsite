@@ -43,20 +43,13 @@ class Sugestao extends \yii\db\ActiveRecord
         ];
     }
 
-    public function enviarsugestao()
-    {
-        $user = Yii::$app->user->findIdentity;
-        $sugestao->id_user = $user;
-        $sugestao->mensagem = $this->mensagem;
 
-        return $sugestao->save(false) ? $sugestao : null;
-    }
 
     /**
      * relação da tabela sugestao com a tabela user
      */
     public function getUser()
     {
-        return $this->hasMany(User::classname(),['id'=>'id_user']);
+        return $this->hasOne(User::classname(),['id'=>'id_user']);
     }
 }

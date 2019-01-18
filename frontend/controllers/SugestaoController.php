@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Sugestao;
 use common\models\User;
 use frontend\models\EditarPasswordForm;
 use frontend\models\EditarPerfilForm;
@@ -56,10 +57,20 @@ class SugestaoController extends Controller
     // para visualizar a view sugestao
     public function actionIndex(){
 
-        $model = new ContactForm();
+        $model = new Sugestao();
 
 
-        if ($model->load(Yii::$app->request->post())) {
+        if (Yii::$app->request->post()) {
+            $sugestao=Yii::$app->request->bodyParams['Sugestao'];
+
+            $msg=$sugestao['mensagem'];
+
+            $model->mensagem = $msg;
+            $model->id_user=Yii::$app->user->getId();
+
+            $model->save();
+
+            return var_dump($model);
 
             
 
