@@ -20,7 +20,7 @@ class EquipaUser extends \yii\db\ActiveRecord
 {
     public static function tableName()
     {
-        return 'equipa_user';
+        return 'equipauser';
     }
 
     /**
@@ -60,7 +60,7 @@ class EquipaUser extends \yii\db\ActiveRecord
      */
     public function getEquipa()
     {
-        return $this->hasOne(User::classname(),['id'=>'id_equipa']);
+        return $this->hasOne(Equipa::classname(),['id'=>'id_equipa']);
     }
 
 

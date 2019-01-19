@@ -24,14 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>Nacionalidade:</p>
     <p><?= $user->nacionalidade ?></p>
     <p>Golos Marcados:</p>
-    <!-- Query SQL que calcula os golos marcados pelo utilizador -->
-    <p><?php
-
-        echo $golosM; ?></p>
+    <p><?= $golosM ?></p>
     <p>Jogos Jogados:</p>
-    <!-- Query SQL para ir calcular os golos marcados pelo utilizador -->
-    <p><?php
-        echo $jogosJogados; ?></p>
+    <p><?= $jogosJogados ?></p>
 
     <p><?= Html::a('Alterar Palavra Passe', ['site/editarpassword'], ['class' => 'btn btn-default']) ?><?= Html::a('Editar Perfil', ['site/editarperfil'], ['class' => 'btn btn-default']) ?></p>
 

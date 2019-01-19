@@ -11,16 +11,7 @@ use Yii;
  * @property int $id
  * @property string $nome
  * @property int $id_criador
- * @property int $id_jogador1
- * @property int $id_jogador2
- * @property int $id_jogador3
- * @property int $id_jogador4
- * @property int $id_jogador5
- * @property int $id_jogador6
- * @property int $id_jogador7
- * @property int $id_jogador8
- * @property int $id_jogador9
- * @property int $id_jogador10
+ *
  */
 class Equipa extends \yii\db\ActiveRecord
 {
@@ -56,20 +47,13 @@ class Equipa extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * relação da tabela equipa com a tabela jogo
-
-    public function getJogo()
-    {
-        return $this->hasOne(Jogo::classname(),['id'=>'id_jogo']);
-    }*/
 
     /**
      * relação da tabela equipa com a tabela user (jogadores/utilizadores)
      */
-    public function getUser()
+    public function getUsers()
     {
-        return $this->hasMany(Equipa::classname(),['id'=>'id_user'])
+        return $this->hasMany(User::classname(),['id'=>'id_user'])
             ->viaTable('equipa_user',['id_equipa'=>'id']);
     }
 }

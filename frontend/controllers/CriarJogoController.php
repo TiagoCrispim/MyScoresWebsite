@@ -47,6 +47,8 @@ class CriarJogoController extends \yii\web\Controller
                     $model->save();
 
 
+
+
                     foreach ($datajogadores as $index => $jogadores) {
 
 

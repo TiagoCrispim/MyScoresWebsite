@@ -107,9 +107,8 @@ class SiteController extends Controller
                 return $this->render('home');
             } else {
                 Yii::$app->user->logout();
-
                 Yii::warning("Não tem permissões para entrar nesta area");
-
+                return $this->render('login', ['model' => $model]);
             }
         }
         else{

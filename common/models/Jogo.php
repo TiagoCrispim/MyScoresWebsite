@@ -11,8 +11,6 @@ use Yii;
  * @property int $id
  * @property int $id_equipa1
  * @property int $id_equipa2
- * @property int $golosEquipa1
- * @property int $golosEquipa2
  * @property \data $data
  * @property \time $hora
  * @property string $local
@@ -34,7 +32,7 @@ class Jogo extends \yii\db\ActiveRecord
     {
         return [
             [['id_equipa1', 'id_equipa2', 'local'], 'required'],
-            [['id_equipa1', 'id_equipa2', 'golosEquipa1', 'golosEquipa2'], 'integer'],
+            [['id_equipa1', 'id_equipa2'], 'integer'],
             [['data'], 'safe'],
             [['hora'], 'safe'],
             [['local'], 'string', 'max' => 255],
@@ -50,8 +48,6 @@ class Jogo extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_equipa1' => 'Id Equipa1',
             'id_equipa2' => 'Id Equipa2',
-            'golosEquipa1' => 'Golos Equipa1',
-            'golosEquipa2' => 'Golos Equipa2',
             'data' => 'Data',
             'hora' => 'Hora',
             'local' => 'Local',
