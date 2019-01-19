@@ -42,7 +42,7 @@ class EquipaUser extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_user' => 'Username:',
-            'id_jogo' => 'Id Jogo',
+            'id_equipa' => 'Id equipa',
 
         ];
     }
@@ -52,7 +52,7 @@ class EquipaUser extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(Jogo::classname(),['id'=>'id_user']);
+        return $this->hasOne(User::classname(),['id'=>'id_user']);
     }
 
     /**
@@ -60,7 +60,8 @@ class EquipaUser extends \yii\db\ActiveRecord
      */
     public function getEquipa()
     {
-        return $this->hasOne(Equipa::classname(),['id'=>'id_equipa']);
+        return $this->hasOne(Equipa::className(),['id'=>'id_equipa']);
+
     }
 
 

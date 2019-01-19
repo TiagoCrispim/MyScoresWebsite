@@ -47,73 +47,28 @@ class CriarJogoController extends \yii\web\Controller
                     $model->save();
 
 
+                   for($i=0;$i < count($datajogadores);$i++){
 
-
-                    foreach ($datajogadores as $index => $jogadores) {
-
-
+                           $username = $datajogadores[$i]['id_user'];
+                           $user = User::findByUsername($username);
+                           $modeljogadores[$i]->id_user = $user->getId();
+                           $equipa = Equipa::findBySql('SELECT * FROM equipa WHERE id_criador=' . $criador . ' ORDER BY ID DESC LIMIT 1')->all();
+                           echo var_dump($user);
+                           $modeljogadores[$i]->id_equipa = $equipa[0]->id;
+                           $modeljogadores[$i]->save();
+                           $model->id=$equipa[0]->id;
+                           $model->nome=$equipa[0]->nome;
+                           $model->id_criador=$equipa[0]->id_criador;
+                           $user->link('equipa',$model);
 
                     }
+
                 }else{
                     $teste='esta merda nao esta a meter os erros bem';
                     return var_dump($teste);
                }
 
 
-/*            for($i = 1;$i < count($data);$i++){*/
-
-
-                //return var_dump(Yii::$app->request->bodyParams['Equipa']);
-                //return json_encode($data['id_jogador'.$i]);
-/*                $username= $data['id_jogador'.$i];
-                $user = User::findByUsername($username);
-                switch ($i){
-                    case 1:
-                        if(  strlen ( $data['id_jogador'.$i] )!=0)
-                        $model->id_jogador1 = $user->getId();
-                        break;
-                    case 2:
-                        if(  strlen ( $data['id_jogador'.$i] )!=0)
-                        $model->id_jogador2 = $user->getId();
-                        break;
-                    case 3:
-                        if(  strlen ( $data['id_jogador'.$i] )!=0)
-                        $model->id_jogador3 = $user->getId();
-                        break;
-                    case 4:
-                        if(  strlen ( $data['id_jogador'.$i] )!=0)
-                        $model->id_jogador4 = $user->getId();
-                        break;
-                    case 5:
-                        if(  strlen ( $data['id_jogador'.$i] )!=0)
-                        $model->id_jogador5 = $user->getId();
-                        break;
-                    case 6:
-                        if(  strlen ( $data['id_jogador'.$i] )!=0)
-                        $model->id_jogador6= $user->getId();
-                        break;
-                    case 7:
-                        if(  strlen ( $data['id_jogador'.$i] )!=0)
-                            $model->id_jogador7= $user->getId();
-                        break;
-                    case 8:
-                        if(  strlen ( $data['id_jogador'.$i] )!=0)
-                        $model->id_jogador8= $user->getId();
-                        break;
-                    case 9:
-                        if(  strlen ( $data['id_jogador'.$i] )!=0)
-                        $model->id_jogador9= $user->getId();
-                        break;
-
-                    case 10:
-                        if(  strlen ( $data['id_jogador'.$i] )!=0)
-                        $model->id_jogador10= $user->getId();
-                        break;
-                    default:
-                        echo "error";
-                }
-
-            }*/
 
 
 
@@ -140,11 +95,18 @@ class CriarJogoController extends \yii\web\Controller
         $id_criador=Yii::$app->user->getId();
         $equipas=Equipa::findBySql('SELECT * FROM equipa WHERE id_criador='.$id_criador.' ORDER BY ID DESC LIMIT 2')->all();
         $equipa1=$equipas[0];
-        $equipa2=$equipas[1];
-        $nome1=$equipa1->nome;
-        $nome2=$equipa2->nome;
+        $id_equipa1=$equipa1->id;
+        //$equipaquery=Equipa::find()->one();
 
-        $data1 = ArrayHelper::toArray($equipa1, [
+
+
+        $numerousers1=count(Equipa::findBySql('SELECT id_user FROM equipa JOIN user WHERE id='.$id_equipa1.' ORDER BY ID')->all());
+        return var_dump($numerousers1);
+       /* $equipa2=$equipas[1];
+        $nome1=$equipa1->nome;
+        $nome2=$equipa2->nome;*/
+
+/*        $data1 = ArrayHelper::toArray($equipa1, [
             'app\models\Post' => [
                 'id',
                 'nome',
@@ -186,7 +148,7 @@ class CriarJogoController extends \yii\web\Controller
                 // the key name in array result => anonymous function
 
             ],
-        ]);
+        ]);*/
 
         $i=0;
         foreach ($data1 as $value) {
