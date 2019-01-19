@@ -6,6 +6,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
@@ -30,7 +31,7 @@ AppAsset::register($this);
     <?php
     if (Yii::$app->user->isGuest) {
         NavBar::begin([
-            'brandLabel' => Yii::$app->name,
+            'brandLabel' => '<img src="' . Url::to('@web/images/logotipo.png') .'" height="22" width="22" class="pull-left">'.Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl = ['/site/index'],
             'options' => [
                 'class' => 'navbar-inverse navbar-fixed-top',
@@ -43,7 +44,7 @@ AppAsset::register($this);
         ];
     } else {
         NavBar::begin([
-            'brandLabel' => Yii::$app->name,
+            'brandLabel' => '<img src="' . Url::to('@web/images/logotipo.png') .'" height="22" width="22" class="pull-left">'.Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl = ['/site/home'],
             'options' => [
                 'class' => 'navbar-inverse navbar-fixed-top',
