@@ -80,7 +80,7 @@ class CriarJogoController extends \yii\web\Controller
 
 
         }else {
-            return $this->render('_equipaform', [
+            return $this->renderAjax('_equipaform', [
                 'model' => $model,
                 'modeljogadores'=>$modeljogadores]);
         }
@@ -94,193 +94,159 @@ class CriarJogoController extends \yii\web\Controller
 
         $id_criador=Yii::$app->user->getId();
         $equipas=Equipa::findBySql('SELECT * FROM equipa WHERE id_criador='.$id_criador.' ORDER BY ID DESC LIMIT 2')->all();
-        $equipa1=$equipas[0];
-        $id_equipa1=$equipa1->id;
-        //$equipaquery=Equipa::find()->one();
-
-
-
-        $numerousers1=count(Equipa::findBySql('SELECT id_user FROM equipa JOIN user WHERE id='.$id_equipa1.' ORDER BY ID')->all());
-        return var_dump($numerousers1);
-       /* $equipa2=$equipas[1];
-        $nome1=$equipa1->nome;
-        $nome2=$equipa2->nome;*/
-
-/*        $data1 = ArrayHelper::toArray($equipa1, [
-            'app\models\Post' => [
-                'id',
-                'nome',
-                'id_criador',
-                'id_jogador1',
-                'id_jogador2',
-                'id_jogador3',
-                'id_jogador4',
-                'id_jogador5',
-                'id_jogador6',
-                'id_jogador7',
-                'id_jogador8',
-                'id_jogador9',
-                'id_jogador10'
-                // the key name in array result => property name
-
-                // the key name in array result => anonymous function
-
-            ],
-        ]);
-
-        $data2 =ArrayHelper::toArray($equipa2, [
-            'app\models\Post' => [
-                'id',
-                'nome',
-                'id_criador',
-                'id_jogador1',
-                'id_jogador2',
-                'id_jogador3',
-                'id_jogador4',
-                'id_jogador5',
-                'id_jogador6',
-                'id_jogador7',
-                'id_jogador8',
-                'id_jogador9',
-                'id_jogador10'
-                // the key name in array result => property name
-
-                // the key name in array result => anonymous function
-
-            ],
-        ]);*/
-
-        $i=0;
-        foreach ($data1 as $value) {
-            if ($value !=null) {
-                $i++;
-            }
-        }
-        $numerojogadores = $i-3;
-        switch ($numerojogadores){
-            case 1:
-                $modelgolos1= [new GolosJogo()];
-                break;
-            case 2:
-                $modelgolos1= [new GolosJogo(), new GolosJogo()];
-                break;
-            case 3:
-                $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo()];
-                break;
-            case 4:
-                $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo()];
-                break;
-            case 5:
-                $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo()];
-                break;
-            case 6:
-                $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(), new GolosJogo(),new GolosJogo()];
-                break;
-            case 7:
-                $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo()];
-                break;
-            case 8:
-                $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
-                break;
-            case 9:
-                $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
-                break;
-
-            case 10:
-                $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
-                break;
-            default:
-                echo "error";
-        }
-
-        $i=0;
-        foreach ($data2 as $value) {
-            if ($value !=null) {
-                $i++;
-            }
-        }
-        $numerojogadores = $i-3;
-        switch ($numerojogadores){
-            case 1:
-                $modelgolos2= [new GolosJogo()];
-                break;
-            case 2:
-                $modelgolos2= [new GolosJogo(), new GolosJogo()];
-                break;
-            case 3:
-                $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo()];
-                break;
-            case 4:
-                $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo()];
-                break;
-            case 5:
-                $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo()];
-                break;
-            case 6:
-                $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(), new GolosJogo(),new GolosJogo()];
-                break;
-            case 7:
-                $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo()];
-                break;
-            case 8:
-                $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
-                break;
-            case 9:
-                $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
-                break;
-
-            case 10:
-                $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
-                break;
-            default:
-                echo "error";
-        }
-
-        $players1=array($data1['id_jogador1'],$data1['id_jogador2'],$data1['id_jogador3'],$data1['id_jogador4'],$data1['id_jogador5'],$data1['id_jogador6'],$data1['id_jogador7'],$data1['id_jogador8'],$data1['id_jogador9'],$data1['id_jogador10']);
-        $players2=array($data2['id_jogador1'],$data2['id_jogador2'],$data2['id_jogador3'],$data2['id_jogador4'],$data2['id_jogador5'],$data2['id_jogador6'],$data2['id_jogador7'],$data2['id_jogador8'],$data2['id_jogador9'],$data2['id_jogador10']);
-
-        for($i = 0;$i < 10;$i++){
-            if($players1[$i] == null){
-                unset($players1[$i]);
-            }else{
-                $user = User::findIdentity($players1[$i]);
-                $players1[$i]=$user->username;
-            }
-
-        }
-        for($i = 0;$i < 10;$i++){
-            if($players2[$i] == null){
-                unset($players2[$i]);
-            }else{
-                $user = User::findIdentity($players2[$i]);
-                $players2[$i]=$user->username;
-            }
-
-        }
-
-
-
-        if (Yii::$app->request->isPost && Model::loadMultiple($modelgolos1, Yii::$app->request->post()) && Model::loadMultiple($modelgolos2, Yii::$app->request->post()) ){
-            $data=Yii::$app->request->bodyParams['Jogo'];
-            return var_dump($data);
+        if(empty($equipas)){
+            echo "cona";
 
 
         }else{
+            $equipa1=$equipas[0];
+            $id_equipa1=$equipa1->id;
 
-            return $this->render('_golosform', [
 
-                'players1'=>$players1,
-                'players2'=>$players2,
-                'model' => $model,
-                'modelgolos1'=>$modelgolos1,
-                'modelgolos2'=>$modelgolos2,
-                'nome1'=>$nome1,
-                'nome2'=>$nome2
 
-                ]
-            );
+            $numerousers1=EquipaUser::find()
+                ->select(['COUNT(*) AS id_user'])
+                ->where (['id_equipa'=>$id_equipa1])
+                ->all();
+
+
+            $equipa2=$equipas[1];
+            $id_equipa2=$equipa2->id;
+
+
+            $numerousers2=EquipaUser::find()
+                ->select(['COUNT(*) AS id_user'])
+                ->where (['id_equipa'=>$id_equipa2])
+                ->all();
+
+            $nome1=$equipa1->nome;
+            $nome2=$equipa2->nome;
+
+
+            switch ($numerousers1[0]['id_user']){
+                case 1:
+                    $modelgolos1= [new GolosJogo()];
+                    break;
+                case 2:
+                    $modelgolos1= [new GolosJogo(), new GolosJogo()];
+                    break;
+                case 3:
+                    $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo()];
+                    break;
+                case 4:
+                    $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo()];
+                    break;
+                case 5:
+                    $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo()];
+                    break;
+                case 6:
+                    $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(), new GolosJogo(),new GolosJogo()];
+                    break;
+                case 7:
+                    $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo()];
+                    break;
+                case 8:
+                    $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
+                    break;
+                case 9:
+                    $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
+                    break;
+
+                case 10:
+                    $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
+                    break;
+                default:
+                    echo "error";
+            }
+
+
+            switch ($numerousers2[0]['id_user']){
+                case 1:
+                    $modelgolos2= [new GolosJogo()];
+                    break;
+                case 2:
+                    $modelgolos2= [new GolosJogo(), new GolosJogo()];
+                    break;
+                case 3:
+                    $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo()];
+                    break;
+                case 4:
+                    $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo()];
+                    break;
+                case 5:
+                    $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo()];
+                    break;
+                case 6:
+                    $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(), new GolosJogo(),new GolosJogo()];
+                    break;
+                case 7:
+                    $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo()];
+                    break;
+                case 8:
+                    $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
+                    break;
+                case 9:
+                    $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
+                    break;
+
+                case 10:
+                    $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
+                    break;
+                default:
+                    echo "error";
+            }
+
+            $players1=EquipaUser::find()
+                ->select(['id_user'])
+                ->where (['id_equipa'=>$id_equipa1])
+                ->all();
+
+            $players2=EquipaUser::find()
+                ->select(['id_user'])
+                ->where (['id_equipa'=>$id_equipa2])
+                ->all();
+
+
+
+            for($i = 0;$i <$numerousers1[0]['id_user'];$i++){
+                $user = User::findIdentity($players1[$i]);
+                $players1[$i]=$user->username;
+
+            }
+            for($i =0;$i <$numerousers2[0]['id_user'];$i++){
+                    $user = User::findIdentity($players2[$i]);
+                    $players2[$i]=$user->username;
+                }
+
+            }
+    
+
+
+            if (Yii::$app->request->isPost && Model::loadMultiple($modelgolos1, Yii::$app->request->post()) && Model::loadMultiple($modelgolos2, Yii::$app->request->post()) ){
+                $data=Yii::$app->request->bodyParams['Jogo'];
+                return var_dump($data);
+            }else{
+
+                return $this->renderAjax('_golosform', [
+
+                        'players1'=>$players1,
+                        'players2'=>$players2,
+                        'model' => $model,
+                        'modelgolos1'=>$modelgolos1,
+                        'modelgolos2'=>$modelgolos2,
+                        'nome1'=>$nome1,
+                        'nome2'=>$nome2
+
+                    ]
+                );
+
+            }
+
 
         }
+
+
+
 
 
     }
@@ -288,4 +254,4 @@ class CriarJogoController extends \yii\web\Controller
 
 
 
-}
+

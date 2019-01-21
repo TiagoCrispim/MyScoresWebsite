@@ -20,7 +20,7 @@ class EquipaUser extends \yii\db\ActiveRecord
 {
     public static function tableName()
     {
-        return 'equipauser';
+        return 'equipa_user';
     }
 
     /**

@@ -1,4 +1,6 @@
 $(function(){
+    alert('sdsdd');
+
     $('#btnequipa1').click(function(){
         $('#modal').modal('show')
             .find('#modelContent')
@@ -11,9 +13,11 @@ $(function(){
             .load($(this).attr('value'));
     });
 
-    $('#btncriarjogo').click(function(){
+    $('#btnfinalizar').click(function(){
         $('#modal').modal('show')
             .find('#modelContent')
             .load($(this).attr('value'));
+        return false;
     });
+
 });
