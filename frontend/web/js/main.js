@@ -1,23 +1,30 @@
 $(function(){
-    alert('sdsdd');
+
 
     $('#btnequipa1').click(function(){
+        alert('equipa1');
         $('#modal').modal('show')
             .find('#modelContent')
-            .load($(this).attr('value'));
+            .load($(this).attr('href'));
+
     });
 
+
     $('#btnequipa2').click(function(){
+        alert('equipa2');
+
         $('#modal').modal('show')
             .find('#modelContent')
-            .load($(this).attr('value'));
+            .load($(this).attr('href'));
     });
 
     $('#btnfinalizar').click(function(){
+        alert('jogo');
+
         $('#modal').modal('show')
             .find('#modelContent')
-            .load($(this).attr('value'));
-        return false;
+            .load($(this).attr('href'));
+
     });
 
 });

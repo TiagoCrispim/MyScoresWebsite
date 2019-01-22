@@ -19,16 +19,16 @@ $this->title = 'My Scores';
 
 <div class="criar-jogo">
 
+<!--
+    <?= Html::button('Criar a primeira equipa', ['value'=>Url::to(['/criar-jogo/criarequipa']),'class'=>'btn btn-primary btn-lg','id'=>'btnequipa1'])?>
+    <?= Html::button('Criar a segunda equipa', ['value'=>Url::to('criar-jogo/criarequipa'),'class'=>'btn btn-primary btn-lg','id'=>'btnequipa2'])?>
+    <?= Html::button('Criar a finalizar jogo', ['value'=>Url::to('criar-jogo/criarjogo'),'class'=>'btn btn-primary btn-lg','id'=>'btnfinalizar'])?>
+-->
 
-    <?= Html::button('Criar a primeira equipa', ['value'=>Yii::$app->urlManager->createUrl('/criar-jogo/criarequipa'),'class'=>'btn btn-primary btn-lg','id'=>'btnequipa1'])?>
-    <?= Html::button('Criar a segunda equipa', ['value'=>Yii::$app->urlManager->createUrl('/criar-jogo/criarequipa'),'class'=>'btn btn-primary btn-lg','id'=>'btnequipa2'])?>
-    <?= Html::button('Criar a finalizar jogo', ['value'=>Yii::$app->urlManager->createUrl('/criar-jogo/criarjogo'),'class'=>'btn btn-primary btn-lg','id'=>'btnfinalizar'])?>
+    <?= Html::a('Criar a primeira equipa', ['criar-jogo/criarequipa'], ['class' => 'btn btn-default'],['id'=>'btnequipa1'])?>
+    <?= Html::a('Criar a segunda equipa', ['criar-jogo/criarequipa'], ['class' => 'btn btn-default'],['id'=>'btnequipa2'])?>
+    <?= Html::a('Fininalizar o jogo', ['criar-jogo/criarjogo'], ['class' => 'btn btn-default'],['id'=>'btnfinalizar'])?>
 
-    <!--
-    <?= Html::a('Criar a primeira equipa', ['criar-jogo/criarequipa'], ['class' => 'btn btn-default'])?>
-    <?= Html::a('Criar a segunda equipa', ['criar-jogo/criarequipa'], ['class' => 'btn btn-default'])?>
-    <?= Html::a('Fininalizar o jogo', ['criar-jogo/criarjogo'], ['class' => 'btn btn-default'])?>
-    -->
 
 
     <?php

@@ -50,7 +50,7 @@ class CriarJogoController extends \yii\web\Controller
                 $teste='esta merda nao esta a meter os erros bem';
                 return var_dump($teste);
             }
-        }else {
+        }else{
             return $this->render('_equipaform', [
                 'model' => $model,
                 'modeljogadores'=>$modeljogadores]);
