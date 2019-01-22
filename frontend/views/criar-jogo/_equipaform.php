@@ -37,9 +37,7 @@ use yii\widgets\ActiveForm;
 
 
 
-    <div class="form-group">
-
-    </div>
+    <div class="form-group"></div>
 
 
 
