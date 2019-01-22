@@ -15,11 +15,10 @@ $this->title = 'Home';
 
                 <p>Ainda não existem registos</p>
 
-<<<<<<< HEAD
-                <p><?= Html::a('Criar Jogo', ['criar-jogo/criarequipa'], ['class' => 'btn btn-default']) ?></p>
-=======
-                <p><?= Html::a('Criar Jogo', ['criar-jogo/criarjogo'], ['class' => 'btn btn-default']) ?></p>
->>>>>>> parent of d2a2e5e... hgvjhv
+
+                <p><?= Html::a('Criar Jogo', ['criar-jogo/index'], ['class' => 'btn btn-default']) ?></p>
+
+
 
             </div>
             <div class="col-lg-3">
