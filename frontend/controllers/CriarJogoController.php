@@ -51,7 +51,7 @@ class CriarJogoController extends \yii\web\Controller
                 return var_dump($teste);
             }
         }else {
-            return $this->render('_equipaform', [
+            return $this->renderAjax('_equipaform', [
                 'model' => $model,
                 'modeljogadores'=>$modeljogadores]);
         }
@@ -62,21 +62,49 @@ class CriarJogoController extends \yii\web\Controller
         $equipas=Equipa::findBySql('SELECT * FROM equipa WHERE id_criador='.$id_criador.' ORDER BY ID DESC LIMIT 2')->all();
         if(empty($equipas)){
             echo "cona";
+<<<<<<< HEAD
         }else{
             $equipa1=$equipas[0];
             $id_equipa1=$equipa1->id;
+=======
+
+
+        }else{
+            $equipa1=$equipas[0];
+            $id_equipa1=$equipa1->id;
+
+
+
+>>>>>>> parent of c0979b5... dsfs
             $numerousers1=EquipaUser::find()
                 ->select(['COUNT(*) AS id_user'])
                 ->where (['id_equipa'=>$id_equipa1])
                 ->all();
+<<<<<<< HEAD
             $equipa2=$equipas[1];
             $id_equipa2=$equipa2->id;
+=======
+
+
+            $equipa2=$equipas[1];
+            $id_equipa2=$equipa2->id;
+
+
+>>>>>>> parent of c0979b5... dsfs
             $numerousers2=EquipaUser::find()
                 ->select(['COUNT(*) AS id_user'])
                 ->where (['id_equipa'=>$id_equipa2])
                 ->all();
+<<<<<<< HEAD
             $nome1=$equipa1->nome;
             $nome2=$equipa2->nome;
+=======
+
+            $nome1=$equipa1->nome;
+            $nome2=$equipa2->nome;
+
+
+>>>>>>> parent of c0979b5... dsfs
             switch ($numerousers1[0]['id_user']){
                 case 1:
                     $modelgolos1= [new GolosJogo()];
@@ -105,12 +133,21 @@ class CriarJogoController extends \yii\web\Controller
                 case 9:
                     $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
                     break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of c0979b5... dsfs
                 case 10:
                     $modelgolos1= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
                     break;
                 default:
                     echo "error";
             }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> parent of c0979b5... dsfs
             switch ($numerousers2[0]['id_user']){
                 case 1:
                     $modelgolos2= [new GolosJogo()];
@@ -139,25 +176,45 @@ class CriarJogoController extends \yii\web\Controller
                 case 9:
                     $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
                     break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of c0979b5... dsfs
                 case 10:
                     $modelgolos2= [new GolosJogo(), new GolosJogo(), new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo(),new GolosJogo()];
                     break;
                 default:
                     echo "error";
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of c0979b5... dsfs
             $players1=EquipaUser::find()
                 ->select(['id_user'])
                 ->where (['id_equipa'=>$id_equipa1])
                 ->all();
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of c0979b5... dsfs
             $players2=EquipaUser::find()
                 ->select(['id_user'])
                 ->where (['id_equipa'=>$id_equipa2])
                 ->all();
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> parent of c0979b5... dsfs
             for($i = 0;$i <$numerousers1[0]['id_user'];$i++){
                 $user = User::findIdentity($players1[$i]);
                 $players1[$i]=$user->username;
+
             }
             for($i =0;$i <$numerousers2[0]['id_user'];$i++){
+<<<<<<< HEAD
                 $user = User::findIdentity($players2[$i]);
                 $players2[$i]=$user->username;
             }
@@ -180,3 +237,46 @@ class CriarJogoController extends \yii\web\Controller
         }
     }
 }
+=======
+                    $user = User::findIdentity($players2[$i]);
+                    $players2[$i]=$user->username;
+                }
+
+            }
+    
+
+
+            if (Yii::$app->request->isPost && Model::loadMultiple($modelgolos1, Yii::$app->request->post()) && Model::loadMultiple($modelgolos2, Yii::$app->request->post()) ){
+                $data=Yii::$app->request->bodyParams['Jogo'];
+                return var_dump($data);
+            }else{
+
+                return $this->renderAjax('_golosform', [
+
+                        'players1'=>$players1,
+                        'players2'=>$players2,
+                        'model' => $model,
+                        'modelgolos1'=>$modelgolos1,
+                        'modelgolos2'=>$modelgolos2,
+                        'nome1'=>$nome1,
+                        'nome2'=>$nome2
+
+                    ]
+                );
+
+            }
+
+
+        }
+
+
+
+
+
+    }
+
+
+
+
+
+>>>>>>> parent of c0979b5... dsfs
