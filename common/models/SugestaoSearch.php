@@ -5,12 +5,12 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\User;
+use app\models\Sugestao;
 
 /**
- * UserSearch represents the model behind the search form of `common\models\User`.
+ * EquipaSearch represents the model behind the search form of `app\models\Equipa`.
  */
-class UserSearch extends User
+class SugestaoSearch extends Sugestao
 {
     /**
      * {@inheritdoc}
@@ -18,8 +18,8 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'nome', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'dataNascimento', 'nacionalidade'], 'safe'],
+            [['id', 'id_user'], 'integer'],
+            [['mensagem'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class UserSearch extends User
      */
     public function search($params)
     {
-        $query = User::find();
+        $query = Sugestao::find();
 
         // add conditions that should always apply here
 
@@ -66,7 +66,7 @@ class UserSearch extends User
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'username', $this->username])
+        $query->andFilterWhere(['like', 'id_user', $this->id_user])
             ->andFilterWhere(['like', 'nome', $this->nome])
             ->andFilterWhere(['like', 'auth_key', $this->auth_key])
             ->andFilterWhere(['like', 'password_hash', $this->password_hash])

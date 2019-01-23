@@ -13,7 +13,7 @@ use yii\filters\AccessControl;
 /**
  * UserListController implements the CRUD actions for User model.
  */
-class UserListController extends Controller
+class UserController extends Controller
 {
     /**
      * {@inheritdoc}

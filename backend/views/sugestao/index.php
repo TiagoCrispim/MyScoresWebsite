@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Users';
+$this->title = 'Sugestões';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
@@ -26,19 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'username',
-            'nome',
-            'auth_key',
-            //'password_hash',
-            //'password_reset_token',
-            'email:email',
-            //'dataNascimento',
-            //'nacionalidade',
-            //'golosMarcados',
-            //'jogosJogados',
-            //'status',
-            //'created_at',
-            //'updated_at',
+            'id_user',
+            'mensagem',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
