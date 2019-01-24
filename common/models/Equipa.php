@@ -43,19 +43,32 @@ class Equipa extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nome' => 'Nome da Equipa (Opcional):',
             'id_criador' => 'Id Criador',
-
         ];
     }
+
+    /**
+     * relação da tabela equipa com a tabela user (jogadores/utilizadores)
+     * relação da tabela equipa com a tabela jogo
+     */
+
+    public function getUsers()
+    {
+        return $this->hasMany(User::classname(),['id'=>'id_user'])
+            ->viaTable('equipa_user',['id_equipa'=>'id']);
+    }
+
+    public function getJogo()
+    {
+        return $this->hasOne(Jogo::classname(),['id'=>'id_jogo']);
+    }
+
 
 
     /**
      * relação da tabela equipa com a tabela user (jogadores/utilizadores)
      */
-    public function getUsers()
+    public function getJogadores()
     {
-
-        return $this->hasMany(User::classname(),['id'=>'id_user'])
-            ->viaTable('equipa_user',['id_equipa'=>'id']);
-
+        return $this->hasMany(User::classname(),['id'=>'id_jogador']);
     }
 }

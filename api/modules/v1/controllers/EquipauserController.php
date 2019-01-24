@@ -3,18 +3,10 @@
 namespace api\modules\v1\controllers;
 
 use yii\filters\auth\QueryParamAuth;
-use yii\rest\ActiveController;
 
-class EquipaController extends ActiveController
+class EquipauserController extends \yii\web\Controller
 {
-
-    public $modelClass = 'common\models\Equipa';
-
-    /*public function actionIndex()
-    {
-        return $this->render('index');
-    }*/
-
+    public $modelClass = 'common\models\EquipaUser';
 
     public function behaviors()
     {
