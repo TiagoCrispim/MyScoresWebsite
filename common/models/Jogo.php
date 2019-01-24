@@ -33,8 +33,8 @@ class Jogo extends \yii\db\ActiveRecord
         return [
             [['id_equipa1', 'id_equipa2', 'local'], 'required'],
             [['id_equipa1', 'id_equipa2'], 'integer'],
-            [['data'], 'safe'],
-            [['hora'], 'safe'],
+            [['data'], 'safe','format' => 'php:Y-m-d'],
+            [['hora'], 'safe','formar' => 'php:H:i'],
             [['local'], 'string', 'max' => 255],
         ];
     }
@@ -48,8 +48,8 @@ class Jogo extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_equipa1' => 'Id Equipa1',
             'id_equipa2' => 'Id Equipa2',
-            'data' => 'Data',
-            'hora' => 'Hora',
+            'data' => 'Data (AAAA-MM-DD)',
+            'hora' => 'Hora (HH:mm)',
             'local' => 'Local',
         ];
     }
