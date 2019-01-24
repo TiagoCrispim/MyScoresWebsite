@@ -30,7 +30,7 @@ class GolosJogo extends \yii\db\ActiveRecord
     {
         return [
             [['id_user', 'id_equipa', 'golosMarcados'], 'required'],
-            [['id_user', 'id_equipa', 'golosMarcados'], 'integer'],
+            [['id_user', 'id_equipa'], 'integer'],
         ];
     }
 

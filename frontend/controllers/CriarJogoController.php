@@ -30,7 +30,6 @@ class CriarJogoController extends \yii\web\Controller
                 'userId'=>$userId
             ];
 
-            /*echo Json::encode($username);*/
         }
 
     }
@@ -190,24 +189,24 @@ class CriarJogoController extends \yii\web\Controller
             }
 
 
-            $players1=EquipaUser::find()
+            $players_1=EquipaUser::find()
                 ->select(['id_user'])
                 ->where (['id_equipa'=>$id_equipa1])
                 ->all();
 
-            $players2=EquipaUser::find()
+            $players_2=EquipaUser::find()
                 ->select(['id_user'])
                 ->where (['id_equipa'=>$id_equipa2])
                 ->all();
 
             for($i = 0;$i <$numerousers1[0]['id_user'];$i++){
-                $user = User::findIdentity($players1[$i]);
+                $user = User::findIdentity($players_1[$i]);
                 $players1[$i]=$user->username;
 
             }
             for($i =0;$i <$numerousers2[0]['id_user'];$i++){
 
-                    $user = User::findIdentity($players2[$i]);
+                    $user = User::findIdentity($players_2[$i]);
                     $players2[$i]=$user->username;
                 }
 
@@ -215,16 +214,44 @@ class CriarJogoController extends \yii\web\Controller
     
 
 
-            if (Yii::$app->request->isPost && Model::loadMultiple($modelgolos1, Yii::$app->request->post()) ){
-                $data1 = Yii::$app->request->bodyParams;
+            if (Yii::$app->request->isPost && Model::loadMultiple($modelgolos1, Yii::$app->request->post()) && Model::loadMultiple($modelgolos2, Yii::$app->request->post())){
 
 
-                if(  Model::loadMultiple($modelgolos2, Yii::$app->request->post())) {
+                foreach ($modelgolos1 as $index=>$golos_jogo){
+                    if (empty($golos_jogo['golosMarcados'])) {
+                        $golos_jogo['golosMarcados']=0;
+                    }
+                }
 
-                    $data = Yii::$app->request->bodyParams;
-                    return var_dump($data);
+
+                for($i=0;$i <$numerousers1[0]['id_user'];$i++){
+                    $modelgolos1[$i]->id_user=$players_1[$i]['id_user'];
+                    $modelgolos1[$i]->id_equipa=$equipa1->id;
+                    $modelgolos1[$i]->golosMarcados;
+                    $modelgolos1[$i]->save();
+
 
                 }
+
+
+                for($i=0;$i <$numerousers2[0]['id_user'];$i++){
+                    $modelgolos1[$i]->id_user=$players_1[$i]['id_user'];
+                    $modelgolos1[$i]->id_equipa=$equipa2->id;
+                    $modelgolos1[$i]->save();
+
+                }
+                $data = Yii::$app->request->bodyParams['Jogo'];
+                $model->data=$data['data'];
+                $model->hora=$data['hora'];
+                $model->local=$data['local'];
+                return $this->render('index');
+
+
+
+
+
+
+
             }else{
 
                 return $this->render('_golosform', [

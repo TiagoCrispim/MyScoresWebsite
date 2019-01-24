@@ -34,7 +34,7 @@ class Jogo extends \yii\db\ActiveRecord
             [['id_equipa1', 'id_equipa2', 'local'], 'required'],
             [['id_equipa1', 'id_equipa2'], 'integer'],
             [['data'], 'date','format' => 'php:Y-m-d'],
-            [['hora'], 'time','formar' => 'php:H:i'],
+            [['hora'], 'time','format' => 'php:H:i'],
             [['local'], 'string', 'max' => 255],
         ];
     }

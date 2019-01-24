@@ -50,7 +50,7 @@ $(function(){
 
                k++;
 
-
+                /* função que anteriormente executava realizava estas funcionalidades*/
               /* $.ajax({
                    url: 'http://localhost/MyScoresWebSite/frontend/web/index.php?r=criar-jogo%2Fgetuser   ',
                    method: 'post',
