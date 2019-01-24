@@ -28,6 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>Jogos Jogados:</p>
     <p><?= $jogosJogados ?></p>
 
-    <p><?= Html::a('Alterar Palavra Passe', ['site/editarpassword'], ['class' => 'btn btn-default']) ?><?= Html::a('Editar Perfil', ['site/editarperfil'], ['class' => 'btn btn-default']) ?></p>
+    <p><?= Html::a('Alterar Palavra Passe', ['site/editarpassword'], ['class' => 'btn btn-default', 'name' => 'password-button']) ?><?= Html::a('Editar Perfil', ['site/editarperfil'], ['class' => 'btn btn-default', 'name' => 'perfil-button']) ?></p>
 
 </div>
