@@ -6,7 +6,7 @@
  * Time: 17:12
  */
 
-
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -16,20 +16,35 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\EquipaUser */
 
 /* @var $form yii\widgets\ActiveForm */
-    $form = ActiveForm::begin();
-/*if(Yii::app()->user->getFlashes() as $key => $message) {
-    echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
-}*/
-
-    echo $form->field($model, 'nome')->textInput();
-
-    foreach ($modeljogadores as $index => $models) {
-    echo $form->field($models, "[$index]id_user")->textInput();
-    }
-    echo Html::submitButton('Save', ['class' => 'btn btn-success']);
-
-    ActiveForm::end();
 ?>
+    <?php $form = ActiveForm::begin(); ?>
+
+<div>
+    <?= $form->field($model, 'nome')->textInput(); ?>
+    <?= Select2::widget([
+            'id'=> 'select',
+            'name' => 'state_10',
+            'data' => $users,
+            'maintainOrder'=>false,
+            'options' => ['placeholder' => 'Escolha um jogador'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+    ]);?>
+    <?= Html::button('adicionar',['value'=>"cona",'onclick' => '(function ( $event )})();', 'class'=>'btn btn-primary btn-lg','id'=>'btnadicionar']); ?>
+
+    </div>
+    <br>
+
+    <?php foreach ($modeljogadores as $index => $models) {?>
+
+    <?= $form->field($models, "[$index]id_user")->textInput(['id' => $index,'value'=>'','readonly'=>true]); ?>
+
+    <?php } ?>
+
+    <?= Html::submitButton('Save', ['class' => 'btn btn-success']); ?>
+
+    <?php ActiveForm::end(); ?>
 
 <div class="equipa-form">
 

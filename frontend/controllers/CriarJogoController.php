@@ -10,13 +10,39 @@ use yii\db\Query;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\Request;
+use yii\helpers\Json;
+
 class CriarJogoController extends \yii\web\Controller
 {
     public function actionIndex(){
         return $this->render('index');
     }
+
+
+    public function actionGetuser(){
+        if (Yii::$app->request->isAjax) {
+            $data =Yii::$app->request->post();
+            $userId=$data['userId'];
+            $username = User::findOne($userId);
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return[
+                'username'=>$username,
+                'userId'=>$userId
+            ];
+
+            /*echo Json::encode($username);*/
+        }
+
+    }
     public function actionCriarequipa()
     {
+        $usersquery= User::findBySql('SELECT username,id FROM user')->all();
+
+        for($i = 0;$i < count($usersquery);$i++){
+            $users[$i] = $usersquery[$i]->username;
+            $id_users[$i]=$usersquery[$i]->id;
+
+        }
         $model = new Equipa();
         $modeljogadores = [new EquipaUser(), new EquipaUser(), new EquipaUser(),new EquipaUser(),new EquipaUser(),new EquipaUser(),new EquipaUser(),new EquipaUser(),new EquipaUser(),new EquipaUser()];
         if (Yii::$app->request->isPost && Model::loadMultiple($modeljogadores, Yii::$app->request->post())){
@@ -53,7 +79,12 @@ class CriarJogoController extends \yii\web\Controller
         }else{
             return $this->render('_equipaform', [
                 'model' => $model,
-                'modeljogadores'=>$modeljogadores]);
+                'modeljogadores'=>$modeljogadores,
+                'users'=> $users,
+                'id_users'=>$id_users
+                ]
+
+            );
         }
     }
     public function actionCriarjogo(){
@@ -184,9 +215,16 @@ class CriarJogoController extends \yii\web\Controller
     
 
 
-            if (Yii::$app->request->isPost && Model::loadMultiple($modelgolos1, Yii::$app->request->post()) && Model::loadMultiple($modelgolos2, Yii::$app->request->post()) ){
-                $data=Yii::$app->request->bodyParams['Jogo'];
-                return var_dump($data);
+            if (Yii::$app->request->isPost && Model::loadMultiple($modelgolos1, Yii::$app->request->post()) ){
+                $data1 = Yii::$app->request->bodyParams;
+
+
+                if(  Model::loadMultiple($modelgolos2, Yii::$app->request->post())) {
+
+                    $data = Yii::$app->request->bodyParams;
+                    return var_dump($data);
+
+                }
             }else{
 
                 return $this->render('_golosform', [
