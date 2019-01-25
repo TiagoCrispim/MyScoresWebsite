@@ -54,6 +54,8 @@ class m130524_201442_init extends Migration
             'id' => $this->primaryKey(),
             'id_user' => $this->integer()->notNull(),
             'id_equipa' => $this->integer()->notNull(),
+            'id_jogo' => $this->integer()->notNull(),
+
             'golosMarcados' => $this->integer(2)->notNull(),
         ], $tableOptions);
         /**

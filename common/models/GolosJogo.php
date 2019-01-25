@@ -11,6 +11,7 @@ use Yii;
  * @property int $id
  * @property int $id_user
  * @property int $id_equipa
+ * @property int $id_jogo
  * @property int $golosMarcados
  */
 class GolosJogo extends \yii\db\ActiveRecord
@@ -43,6 +44,7 @@ class GolosJogo extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_user' => 'Id Jogador',
             'id_equipa' => 'Id Equipa',
+            'id_jopgo'=>'Id Jogo',
             'golosMarcados' => 'Golos Marcados',
         ];
     }
@@ -50,11 +52,14 @@ class GolosJogo extends \yii\db\ActiveRecord
     /**
      * relação da tabela golosJogo com a tabela jogo
      */
-    public function geteEquipa()
+    public function getEquipa()
     {
-        return $this->hasOne(Jogo::classname(),['id'=>'id_equipa']);
+        return $this->hasOne(Equipa::classname(),['id'=>'id_equipa']);
     }
-
+    public function getJogo()
+    {
+        return $this->hasOne(Jogo::classname(),['id'=>'id_jogo']);
+    }
     /**
      * relação da tabela golosJogo com a tabela user (jogador/utilizador)
      */
