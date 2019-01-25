@@ -28,7 +28,7 @@ $this->title = 'My Scores';
 
     <?= Html::a('Criar a primeira equipa', ['criar-jogo/criarequipa'],[ 'class' => 'btn btn-default','id'=>'btnequipa1'])?>
     <?= Html::a('Criar a segunda equipa', ['criar-jogo/criarequipa'],[ 'class' => 'btn btn-default','id'=>'btnequipa2'])?>
-    <?= Html::a('Fininalizar o jogo', ['criar-jogo/criarjogo'], ['class' => 'btn btn-default','id'=>'btnfinalizar'])?>
+    <?= Html::a('Finalizar o jogo', ['criar-jogo/criarjogo'], ['class' => 'btn btn-default','id'=>'btnfinalizar'])?>
 
 
 
