@@ -28,8 +28,8 @@ class EditarPerfilCest
         //ir para a página editar perfil
         $I->click('Editar Perfil');
         //alterar dados
-        $I->fillField('email', 'tiagocrispim99@gmail.com');
-        $I->click('guardaralteracoes-button');
+        $I->fillField('EditarPerfilForm[email]', 'tiagocrispim99@gmail.com');
+        $I->click('Guardar Alterações');
         //verificar que atualizou dados
         $I->see('tiagocrispim99@gmail.com', 'p');
     }

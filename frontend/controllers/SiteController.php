@@ -159,7 +159,10 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->guardardados()) {
                 $user = Yii::$app->user->identity ;
-                return $this->render('perfil', ['user' => $user]);
+                $queryGolos = GolosJogo::find()->where(['id_user' => $user->getId()]);
+                $golosM = $queryGolos->sum('golosMarcados');
+                $jogosJogados = $queryGolos->count();
+                return $this->render('perfil', ['user'=>$user, 'golosM' => $golosM, 'jogosJogados' => $jogosJogados]);
             }
         }
 
