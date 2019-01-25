@@ -1,14 +1,15 @@
 <?php namespace frontend\tests\acceptance;
 use frontend\tests\AcceptanceTester;
+use yii\helpers\Url;
 
 class SignupCest
 {
     protected $formId = '#form-signup';
 
 
-    public function _before(FunctionalTester $I)
+    public function _before(AcceptanceTester $I)
     {
-        $I->amOnRoute('site/signup');
+        $I->amOnPage(Url::toRoute('/site/signup'));
     }
 
     public function signupWithEmptyFields(AcceptanceTester $I)
@@ -22,8 +23,7 @@ class SignupCest
 
     public function signupWithWrongEmail(AcceptanceTester $I)
     {
-        $I->submitForm(
-            $this->formId, [
+        $I->submitForm('#form-signup', [
                 'SignupForm[username]' => 'Erro',
                 'SignupForm[nome]' => 'Teste',
                 'SignupForm[email]' => 'deviaEstarAquiUmEmail',
@@ -39,10 +39,10 @@ class SignupCest
 
     public function signupSuccessfully(AcceptanceTester $I)
     {
-        $I->submitForm($this->formId, [
-            'SignupForm[username]' => 'Teste',
+        $I->submitForm('#form-signup', [
+            'SignupForm[username]' => 'Teste2342',
             'SignupForm[nome]' => 'Teste',
-            'SignupForm[email]' => 'teste@gmail.com',
+            'SignupForm[email]' => 'teste74657@gmail.com',
             'SignupForm[dataNascimento]' => '1999-12-27',
             'SignupForm[nacionalidade]' => 'Portugal',
             'SignupForm[password]' => '123123',

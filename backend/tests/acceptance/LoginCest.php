@@ -1,11 +1,12 @@
 <?php namespace frontend\tests\acceptance;
 use backend\tests\AcceptanceTester;
+use yii\helpers\Url;
 
 class LoginCest
 {
     public function _before(AcceptanceTester $I)
     {
-        $I->amOnPage('site/login');
+        $I->amOnPage(Url::toRoute('/site/login'));
     }
 
     protected function formParams($login, $password)
