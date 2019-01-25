@@ -20,14 +20,14 @@ echo Html::tag('h1',Html::encode($nome2), ['class'=>'username']);
 foreach ($modelgolos2 as $index => $models) {
     echo Html::tag('p',Html::encode($players2[$index]), ['class'=>'username']);
 
-    echo $form->field($models, "[$index]golosMarcados")->textInput(['name'=>$index.'equipa']);
+    echo $form->field($models, "[$index]golosMarcados")->textInput(['name'=>$index.'equipa1']);
 
 }
 echo Html::tag('h1',Html::encode($nome1), ['class'=>'username']);
 
 foreach ($modelgolos1 as $index => $models) {
     echo Html::tag('p',Html::encode($players1[$index]), ['class'=>'username']);
-    echo $form->field($models, "[$index]golosMarcados")->textInput();
+    echo $form->field($models, "[$index]golosMarcados")->textInput(['name'=>$index.'equipa2']);
 
 }
 echo $form->field($model, 'data')->textInput();
