@@ -42,6 +42,6 @@ class EquipaTest extends \Codeception\Test\Unit
 
         $equipa = $model->save();
 
-        expect_that($model->getErrors('id_user'));
+        expect_that($model->getErrors('id_criador'));
     }
 }
