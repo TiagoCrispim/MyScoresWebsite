@@ -2,7 +2,6 @@ $(function(){
 
 
     $('#btnequipa1').click(function(){
-        alert('equipa1');
         /*$('#modal').modal('show')
             .find('#modelContent')
             .load($(this).attr('href'));
@@ -11,7 +10,6 @@ $(function(){
 
 
     $('#btnequipa2').click(function(){
-        alert('equipa2');
 /*
         $('#modal').modal('show')
             .find('#modelContent')
@@ -19,7 +17,6 @@ $(function(){
     });
 
     $('#btnfinalizar').click(function(){
-        alert('jogo');
 
         /*$('#modal').modal('show')
             .find('#modelContent')
@@ -43,7 +40,6 @@ $(function(){
            if(k<10) {
 
                var user_selecionado= $("#select2-select-container").prop("title");;
-               alert(user_selecionado);
 
                $('#'+k).val(user_selecionado);
 

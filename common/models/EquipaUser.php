@@ -30,7 +30,7 @@ class EquipaUser extends \yii\db\ActiveRecord
     {
         return [
             [['id_equipa'], 'required','message'=>'Este campo não ser deixado em branco'],
-            [['id_equipa'], 'integer'],
+            [['id_equipa'], 'integer']
         ];
     }
 

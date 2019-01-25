@@ -91,7 +91,7 @@ class CriarJogoController extends \yii\web\Controller
         $id_criador=Yii::$app->user->getId();
         $equipas=Equipa::findBySql('SELECT * FROM equipa WHERE id_criador='.$id_criador.' ORDER BY ID DESC LIMIT 2')->all();
         if(empty($equipas)){
-            echo "cona";
+            echo "crie equipas antes de tentar finalizar o jogo";
 
         }else{
             $equipa1=$equipas[0];
