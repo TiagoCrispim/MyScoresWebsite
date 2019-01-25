@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
                 'allowClear' => true
             ],
     ]);?>
-    <?= Html::button('adicionar',['value'=>"cona",'onclick' => '(function ( $event )})();', 'class'=>'btn btn-primary btn-lg','id'=>'btnadicionar']); ?>
+    <?= Html::button('Adicionar',['value'=>"cona",'onclick' => '(function ( $event )})();', 'class'=>'btn btn-primary btn-lg','id'=>'btnadicionar']); ?>
 
     </div>
     <br>
