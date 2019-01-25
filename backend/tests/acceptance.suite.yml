@@ -1,9 +1,9 @@
-suite_namespace: frontend\tests\acceptance
+suite_namespace: backend\tests\acceptance
 actor: AcceptanceTester
 modules:
     enabled:
-        - WebDriver:
+        - PhpBrowser:
             url: http://localhost:8080
-            browser: firefox
+            browser: Chrome
         - Yii2:
             part: init
