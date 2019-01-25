@@ -30,7 +30,7 @@ class GolosJogo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'id_equipa', 'golosMarcados'], 'required'],
+            [['id_user', 'id_equipa'], 'required'],
             [['id_user', 'id_equipa'], 'integer'],
         ];
     }
@@ -44,7 +44,7 @@ class GolosJogo extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_user' => 'Id Jogador',
             'id_equipa' => 'Id Equipa',
-            'id_jopgo'=>'Id Jogo',
+           // 'id_jopgo'=>'Id Jogo',
             'golosMarcados' => 'Golos Marcados',
         ];
     }
@@ -56,10 +56,10 @@ class GolosJogo extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Equipa::classname(),['id'=>'id_equipa']);
     }
-    public function getJogo()
+   /* public function getJogo()
     {
         return $this->hasOne(Jogo::classname(),['id'=>'id_jogo']);
-    }
+    }*/
     /**
      * relação da tabela golosJogo com a tabela user (jogador/utilizador)
      */

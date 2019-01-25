@@ -214,13 +214,17 @@ class CriarJogoController extends \yii\web\Controller
     
 
 
-            if (Yii::$app->request->isPost && Model::loadMultiple($modelgolos1, Yii::$app->request->post()) && Model::loadMultiple($modelgolos2, Yii::$app->request->post())){
+            if (Yii::$app->request->isPost && Model::loadMultiple($modelgolos2, Yii::$app->request->post()) && Model::loadMultiple($modelgolos1, Yii::$app->request->post())){
 
                 $data = Yii::$app->request->bodyParams['Jogo'];
+                $model->id_equipa1=$id_equipa1;
+                $model->id_equipa2=$id_equipa2;
                 $model->data=$data['data'];
                 $model->hora=$data['hora'];
                 $model->local=$data['local'];
                 $model->save();
+
+                if($model->save()== false){}
 
                 $jogo = Jogo:: findBySql('SELECT id FROM jogo ORDER BY ID DESC LIMIT 1')->one();
 
@@ -229,32 +233,32 @@ class CriarJogoController extends \yii\web\Controller
                         $golos_jogo['golosMarcados']=0;
                     }
                 }
-
-
-                for($i=0;$i <$numerousers1[0]['id_user'];$i++){
-                    $modelgolos1[$i]->id_user=$players_1[$i]['id_user'];
-                    $modelgolos1[$i]->id_equipa=$equipa1->id;
-                    $modelgolos1[$i]->golosMarcados;
-                    $modelgolos1[$i]->id_jogo = $jogo;
-                    $modelgolos1[$i]->save();
-
-
+                foreach ($modelgolos2 as $index=>$golos_jogo){
+                    if (empty($golos_jogo['golosMarcados'])) {
+                        $golos_jogo['golosMarcados']=0;
+                    }
                 }
 
 
-                for($i=0;$i <$numerousers2[0]['id_user'];$i++){
+                for($i=0;$i <$numerousers1[0]['id_user']-1;$i++){
+                    $modelgolos1[$i]->id_user=$players_1[$i]['id_user'];
+                    $modelgolos1[$i]->id_equipa=$equipa1->id;
+                    $modelgolos1[$i]->golosMarcados;
+                    $modelgolos1[$i]->id_jogo = $jogo->id;
+                    $modelgolos1[$i]->save();
+                }
+
+
+                for($i=0;$i <$numerousers2[0]['id_user']-1;$i++){
                     $modelgolos2[$i]->id_user=$players_1[$i]['id_user'];
                     $modelgolos2[$i]->id_equipa=$equipa2->id;
-                    $modelgolos2[$i]->id_jogo = $jogo;
+                    $modelgolos2[$i]->id_jogo = $jogo->id;
                     $modelgolos1[$i]->golosMarcados;
                     $modelgolos2[$i]->save();
 
                 }
-                $data = Yii::$app->request->bodyParams['Jogo'];
-                $model->data=$data['data'];
-                $model->hora=$data['hora'];
-                $model->local=$data['local'];
                 return $this->render('index');
+
 
 
 
