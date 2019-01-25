@@ -250,10 +250,10 @@ class CriarJogoController extends \yii\web\Controller
 
 
                 for($i=0;$i <$numerousers2[0]['id_user'];$i++){
-                    $modelgolos2[$i]->id_user=$players_1[$i]['id_user'];
+                    $modelgolos2[$i]->id_user=$players_2[$i]['id_user'];
                     $modelgolos2[$i]->id_equipa=$equipa2->id;
                     $modelgolos2[$i]->id_jogo = $jogo->id;
-                    $modelgolos1[$i]->golosMarcados;
+                    $modelgolos2[$i]->golosMarcados;
                     //var_dump($modelgolos1[$i]->golosMarcados);
                     $modelgolos2[$i]->save();
 
