@@ -224,23 +224,23 @@ class CriarJogoController extends \yii\web\Controller
                 $model->local=$data['local'];
                 $model->save();
 
-                if($model->save()== false){}
+/*                if($model->save()== false){}*/
 
                 $jogo = Jogo:: findBySql('SELECT id FROM jogo ORDER BY ID DESC LIMIT 1')->one();
 
-                foreach ($modelgolos1 as $index=>$golos_jogo){
+/*                foreach ($modelgolos1 as $index=>$golos_jogo){
                     if (empty($golos_jogo['golosMarcados'])) {
                         $golos_jogo['golosMarcados']=0;
                     }
                 }
                 foreach ($modelgolos2 as $index=>$golos_jogo){
                     if (empty($golos_jogo['golosMarcados'])) {
-                        $golos_jogo['golosMarcados']=0;
+                        $golos_jogo['golosMarcados']=0;yt
                     }
-                }
+                }*/
 
 
-                for($i=0;$i <$numerousers1[0]['id_user']-1;$i++){
+                for($i=0;$i <$numerousers1[0]['id_user'];$i++){
                     $modelgolos1[$i]->id_user=$players_1[$i]['id_user'];
                     $modelgolos1[$i]->id_equipa=$equipa1->id;
                     $modelgolos1[$i]->golosMarcados;
@@ -249,11 +249,12 @@ class CriarJogoController extends \yii\web\Controller
                 }
 
 
-                for($i=0;$i <$numerousers2[0]['id_user']-1;$i++){
+                for($i=0;$i <$numerousers2[0]['id_user'];$i++){
                     $modelgolos2[$i]->id_user=$players_1[$i]['id_user'];
                     $modelgolos2[$i]->id_equipa=$equipa2->id;
                     $modelgolos2[$i]->id_jogo = $jogo->id;
                     $modelgolos1[$i]->golosMarcados;
+                    //var_dump($modelgolos1[$i]->golosMarcados);
                     $modelgolos2[$i]->save();
 
                 }

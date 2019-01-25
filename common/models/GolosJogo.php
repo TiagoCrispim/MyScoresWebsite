@@ -32,6 +32,8 @@ class GolosJogo extends \yii\db\ActiveRecord
         return [
             [['id_user', 'id_equipa'], 'required'],
             [['id_user', 'id_equipa'], 'integer'],
+            [['golosMarcados'], 'default', 'value' => '0'],
+
         ];
     }
 
