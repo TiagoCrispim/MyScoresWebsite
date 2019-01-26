@@ -72,8 +72,8 @@ class CriarJogoController extends \yii\web\Controller
                 }
                 return $this->render('index');
             }else{
-                $teste='esta merda nao esta a meter os erros bem';
-                return var_dump($teste);
+
+                Yii::warning("Não tem permissões para entrar nesta area");;
             }
         }else{
             return $this->render('_equipaform', [
