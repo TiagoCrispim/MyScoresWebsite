@@ -13,34 +13,40 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="user-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <?php \yii\widgets\Pjax::begin();?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'username',
             'nome',
-            'auth_key',
-            //'password_hash',
-            //'password_reset_token',
             'email:email',
-            //'dataNascimento',
-            //'nacionalidade',
-            //'golosMarcados',
-            //'jogosJogados',
-            //'status',
-            //'created_at',
-            //'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+
+
+            ['class' => 'yii\grid\ActionColumn',
+                'template'=>'{Block}',
+                'buttons'=>[
+                    'Block' =>function($url,$user){
+                        if(Yii::$app->authManager->getRolesByUser($user->id)=='blocked'){
+                            return Html::a('Unblock',['block','id'=>$user->id],['class'=>'btn btn-primary']);
+
+                        }else{
+                            return Html::a('Block',['block','id'=>$user->id],['class'=>'btn btn-primary']);
+
+
+                        }
+
+                    }
+
+            ],
         ],
-    ]); ?>
+
+      ]
+
+
+
+  ]);?>
+    <?php \yii\widgets\Pjax::end();?>
 </div>

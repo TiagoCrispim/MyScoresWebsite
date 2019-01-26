@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Sugestao;
+use app\models\Sugestao;
 use common\models\SugestaoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

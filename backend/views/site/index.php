@@ -32,11 +32,11 @@ $this->title = 'My Scores';
                 <p><?= Html::a('Visualizar Sugestões', ['sugestao/index'], ['class' => 'btn btn-default']) ?></p>
             </div>
             <div class="col-lg-4" style="text-align: center">
-                <h2>Visualizar Jogos</h2>
+                <h2>Criar Adminstradores</h2>
 
-                <p>Visualizar Jogos Registados.</p>
+                <p>Criar utilizadores que podem realizar operaçóes no backend</p>
 
-                <p><?= Html::a('Visualizar Jogos', ['site/index'], ['class' => 'btn btn-default']) ?></p>
+                <p><?= Html::a('Criar Admins', ['criar-admins/index'], ['class' => 'btn btn-default']) ?></p>
             </div>
         </div>
 

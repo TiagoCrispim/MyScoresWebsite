@@ -136,4 +136,27 @@ class UserController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionBlock($id){
+       // $user= $this->findModel($id);
+        if (Yii::$app->authManager->getRolesByUser($id)=='blocked'){
+            $auth = \Yii::$app->authManager;
+            $blockRole=$auth->getRole('blocked');
+            $regularRole = $auth->getRole('regular');
+            $auth->revoke( $blockRole, $id);
+            $auth->assign($regularRole, $id);
+            return $this->redirect(['index']);
+
+        }else{
+            $auth = \Yii::$app->authManager;
+            $blockRole = $auth->getRole('blocked');
+            $regularRole = $auth->getRole('regular');
+            $auth->revoke($regularRole, $id);
+            $auth->assign($blockRole, $id);
+            return $this->redirect(['index']);
+
+
+
+        }
+    }
 }
