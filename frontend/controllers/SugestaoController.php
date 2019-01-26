@@ -66,7 +66,7 @@ class SugestaoController extends Controller
             $model->save();
             Yii::$app->session->setFlash('success', 'Sugestão enviada com sucesso!');
 
-            //return var_dump($sugestao);
+
 
             
 

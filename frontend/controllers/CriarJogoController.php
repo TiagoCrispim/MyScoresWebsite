@@ -228,16 +228,6 @@ class CriarJogoController extends \yii\web\Controller
 
                 $jogo = Jogo:: findBySql('SELECT id FROM jogo ORDER BY ID DESC LIMIT 1')->one();
 
-/*                foreach ($modelgolos1 as $index=>$golos_jogo){
-                    if (empty($golos_jogo['golosMarcados'])) {
-                        $golos_jogo['golosMarcados']=0;
-                    }
-                }
-                foreach ($modelgolos2 as $index=>$golos_jogo){
-                    if (empty($golos_jogo['golosMarcados'])) {
-                        $golos_jogo['golosMarcados']=0;yt
-                    }
-                }*/
 
 
                 for($i=0;$i <$numerousers1[0]['id_user'];$i++){

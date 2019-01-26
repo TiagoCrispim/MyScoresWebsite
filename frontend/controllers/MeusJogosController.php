@@ -37,21 +37,6 @@ class MeusJogosController extends \yii\web\Controller
 
 
 
-/*        $usernames3[0] = array();
-        $usernames3[1] = array();
-
-        for($i=0;$i<count($usernames1);$i++) {
-            $usernames3[0][$i] = $usernames1[$i];
-        }
-
-        for($i=0;$i<count($usernames2);$i++) {
-            $usernames3[1][$i] = $usernames2[$i];
-        }*/
-
-       /*     for($k=0;$k<=count($golos_user);$k++){
-                return var_dump($golos_equipa1[$k]);
-            }*/
-        /*}*/
         return $this->render('index', [
 
                 'nome_equipa1'=>$nome_equipa1,

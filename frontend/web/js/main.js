@@ -1,4 +1,4 @@
-$(function(){
+      $(function(){
 
 
     $('#btnequipa1').click(function(){
@@ -27,7 +27,7 @@ $(function(){
     for (i = 0; i < 10; i++) {
         $('#btnadicionar').click(function () {
             /!*alert($(element).value());*!/
-            alert('cona');
+            alert('alerta');
             /!*$("").append();*!/
 
 
@@ -64,7 +64,7 @@ $(function(){
 
                    },
                    error: function (data) {
-                       alert('deu merda');
+                       alert('alerta');
                    }
                });*/
            }else{
