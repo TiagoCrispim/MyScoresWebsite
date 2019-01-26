@@ -18,17 +18,12 @@ use yii\bootstrap\Modal;
 $this->title = 'My Scores';
 ?>
 
-<div class="criar-jogo">
+<div class="criar-jogo" style="text-align: center; margin-top: 20%">
 
-<!--
-    <?= Html::button('Criar a primeira equipa', ['value'=>Url::to(['/criar-jogo/criarequipa']),'class'=>'btn btn-primary btn-lg','id'=>'btnequipa1'])?>
-    <?= Html::button('Criar a segunda equipa', ['value'=>Url::to('criar-jogo/criarequipa'),'class'=>'btn btn-primary btn-lg','id'=>'btnequipa2'])?>
-    <?= Html::button('Criar a finalizar jogo', ['value'=>Url::to('criar-jogo/criarjogo'),'class'=>'btn btn-primary btn-lg','id'=>'btnfinalizar'])?>
--->
 
-    <?= Html::a('Criar a primeira equipa', ['criar-jogo/criarequipa'],[ 'class' => 'btn btn-default','id'=>'btnequipa1'])?>
-    <?= Html::a('Criar a segunda equipa', ['criar-jogo/criarequipa'],[ 'class' => 'btn btn-default','id'=>'btnequipa2'])?>
-    <?= Html::a('Finalizar o jogo', ['criar-jogo/criarjogo'], ['class' => 'btn btn-default','id'=>'btnfinalizar'])?>
+    <?= Html::a('Criar a primeira equipa', ['criar-jogo/criarequipa'],[ 'class' => 'btn btn-default','id'=>'btnequipa1', 'style' => 'padding: 40px 120px;'])?>
+    <?= Html::a('Criar a segunda equipa', ['criar-jogo/criarequipa'],[ 'class' => 'btn btn-default','id'=>'btnequipa2', 'style' => 'padding: 40px 120px;'])?>
+    <?= Html::a('Finalizar o jogo', ['criar-jogo/criarjogo'], ['class' => 'btn btn-default','id'=>'btnfinalizar', 'style' => 'padding: 40px 120px;'])?>
 
 
 
