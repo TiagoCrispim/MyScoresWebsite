@@ -49,6 +49,7 @@ return [
                     'extraPatterns' => [
                         'POST login' => 'login',
                         'POST registo' => 'registo',
+                        'GET meusjogos' => 'meusjogos',
                     ],
                 ]
             ],
