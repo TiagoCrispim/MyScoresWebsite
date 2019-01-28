@@ -23,13 +23,17 @@ class JogoController extends ActiveController
      * @return array|void
      */
 
-    public function behaviors()
+    /*public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => QueryParamAuth::className()
         ];
         return $behaviors;
+    }*/
+
+    public function actionGetjogo(){
+        
     }
 
 }
