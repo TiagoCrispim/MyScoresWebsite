@@ -33,6 +33,7 @@ class JogoController extends ActiveController
     }*/
 
     public function actionGetjogo(){
+
         
     }
 
