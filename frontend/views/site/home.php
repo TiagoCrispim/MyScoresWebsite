@@ -14,7 +14,7 @@ $this->title = 'Home';
                 <h1>Criar Jogos:</h1>
 
 
-                <p><?= Html::a('Criar Jogo', ['criar-jogo/index'], ['class' => 'btn btn-default', 'name' => 'criarjogo-button', 'style' => 'padding: 30px 100px;']) ?></p>
+                <p><?= Html::a('Criar Jogo', ['meus-jogos/index'], ['class' => 'btn btn-default', 'name' => 'criarjogo-button', 'style' => 'padding: 30px 100px;']) ?></p>
 
 
 

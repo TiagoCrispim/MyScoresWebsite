@@ -12,12 +12,16 @@
         <span id="resultado1"> <?=$nome_equipa1[$i][0]['nome']?> </span> <span>VS</span> <span id="resultado2"> <?=$nome_equipa2[$i][0]['nome']?></span>
 
 
-        <?php for($j=0;$j<=count($usernames1);$j++){?>
-            <!--<div><?=$usernames1[$i][$j]?></div>-->?>
+        <?php for($j=0;$j<=count($usernames1)+2;$j++){?>
+            <div>
+                <span><?=$usernames1[$i][$j]?></span>
+                <span><?=$usernames2[$i][$j]?></span>
+            </div>
 
-        <?php}?>
+
+        <?php }?>
 
 
     </div>
 
-<?php}?>
+<?php } ?>
