@@ -1,27 +1,37 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rodas
- * Date: 25/01/2019
- * Time: 03:29
- */
+$this->title = 'Meus Jogos';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php for ($i=0;$i < count($golos_equipa1);$i++) {?>
     <div class="card">
+        <div class="body-content" style="margin-bottom: 20px;text-align: center">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-5">
+                    <h3 id="resultado1"> <?=$nome_equipa1[$i][0]['nome']?> </h3>
+                    </div>
+                    <div class="col-lg-2">
+                        <h3>VS</h3>
+                    </div>
+                    <div class="col-lg-5">
+                        <h3 id="resultado2"> <?=$nome_equipa2[$i][0]['nome']?></h3>
+                    </div>
 
-        <span id="resultado1"> <?=$nome_equipa1[$i][0]['nome']?> </span> <span>VS</span> <span id="resultado2"> <?=$nome_equipa2[$i][0]['nome']?></span>
+                    <?php for($j=0;$j<count($usernames1)+2;$j++){?>
+                        <div class="col-lg-5">
+                            <p><?=$usernames1[$i][$j]?></p>
+                        </div>
+                        <div class="col-lg-2">
+
+                        </div>
+                        <div class="col-lg-5">
+                            <p><?=$usernames2[$i][$j]?></p>
+                        </div>
 
 
-        <?php for($j=0;$j<=count($usernames1)+2;$j++){?>
-            <div>
-                <span><?=$usernames1[$i][$j]?></span>
-                <span><?=$usernames2[$i][$j]?></span>
+                    <?php }?>
+                 </div>
             </div>
-
-
-        <?php }?>
-
-
+        </div>
     </div>
-
 <?php } ?>
