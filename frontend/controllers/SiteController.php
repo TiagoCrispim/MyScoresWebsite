@@ -133,6 +133,22 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays perfil de outro jogador page.
+     *
+     * @return mixed
+     */
+    public function actionPerfildeoutrojogador()
+    {
+        //$user corresponde ao utilizador que pretendemos visualizar
+        //$user = Yii::$app->user->identity;
+        $userid = Yii::$app->user->getId();
+        $queryGolos = GolosJogo::find()->where(['id_user' => $userid]);
+        $golosM = $queryGolos->sum('golosMarcados');
+        $jogosJogados = $queryGolos->count();
+        return $this->render('perfil', ['user'=>$user, 'golosM' => $golosM, 'jogosJogados' => $jogosJogados]);
+    }
+
+    /**
      * Displays perfil page.
      *
      * @return mixed
