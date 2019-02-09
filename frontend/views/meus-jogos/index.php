@@ -4,7 +4,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php for ($i=0;$i < count($golos_equipa1);$i++) {?>
     <div class="card">
-        <div class="body-content" style="margin-bottom: 20px;text-align: center">
+        <div class="body-content" style="margin-bottom: 20px; text-align: center; border-style: solid;">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="col-lg-5">
