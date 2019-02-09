@@ -7,9 +7,34 @@ use common\models\GolosJogo;
 use common\models\User;
 use common\models\Jogo;
 use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 class MeusJogosController extends \yii\web\Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index'],
+                'rules' => [
+                    [
+                        'actions' => ['index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex(){
         $user_id=Yii::$app->user->getId();
         $usernames1=array(array());
