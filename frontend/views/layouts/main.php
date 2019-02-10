@@ -53,6 +53,7 @@ AppAsset::register($this);
 
         $menuItems = [
             ['label' => 'Home', 'url' => ['/site/home']],
+            ['label' => 'Meus Jogos', 'url' => ['/meus-jogos/index']],
             ['label' => 'Contacto', 'url' => ['/sugestao/index']],
             ['label' => 'Perfil', 'url' => ['/site/perfil']],
         ];
