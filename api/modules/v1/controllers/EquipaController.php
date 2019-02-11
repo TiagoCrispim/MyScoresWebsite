@@ -70,6 +70,14 @@ class EquipaController extends ActiveController
         $equipa2=$equipas[1];
         $id_equipa2=$equipa2->id;
 
+        $jogo= new Jogo();
+        $jogo->local=Yii::$app->request->post('local');
+        $jogo->hora=Yii::$app->request->post('hora');
+        $jogo->data=Yii::$app->request->post('data');
+        $jogo->id_equipa1=$id_equipa1;
+        $jogo->id_equipa2=$id_equipa2;
+        $jogo->save(false);
+
         $players_1=EquipaUser::find()
             ->select(['id_user'])
             ->where (['id_equipa'=>$id_equipa1])
