@@ -92,7 +92,7 @@ class EquipaController extends ActiveController
                 $golos_jogo->id_jogo=$jogo->id;
                 $golos_jogo->id_user=$players_1[$i]['id_user'];
                 $golos_jogo->golosMarcados=Yii::$app->request->post('jogagorA'.$i.'');
-
+                $golos_jogo->save();
 
             }
         }
@@ -104,6 +104,7 @@ class EquipaController extends ActiveController
                 $golos_jogo->id_jogo=$jogo->id;
                 $golos_jogo->id_user=$players_2[$i]['id_user'];
                 $golos_jogo->golosMarcados=Yii::$app->request->post('jogagorB'.$i.'');
+                $golos_jogo->save();
 
 
             }
