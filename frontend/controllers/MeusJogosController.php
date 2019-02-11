@@ -45,13 +45,14 @@ class MeusJogosController extends \yii\web\Controller
 
 
         for($i=0;$i<count($golos_user);$i++) {
-            //$jogos= Jogo::findBySql('SELECT * FROM jogos where ')
             $golos_equipa1[$i] = GolosJogo::findBySql('SELECT * FROM golos_jogo where id_equipa=' . $golos_user[$i]->id_equipa)->all();
             $nome_equipa1[$i]= Equipa::findBySql('SELECT nome FROM equipa where  id=' . $golos_user[$i]->id_equipa)->all();
 
             for ($j = 0; $j < count($golos_equipa1); $j++) {
                 $id_jogo = $golos_equipa1[$i][0]['id_jogo'];
                 $golos_equipa2[$i]= GolosJogo::findBySql('SELECT * FROM golos_jogo where id_jogo=' . $id_jogo . ' and id_equipa<>' . $golos_user[$i]->id_equipa)->all();
+
+
                 $nome_equipa2[$i]= Equipa::findBySql('SELECT nome FROM equipa where  id=' . $golos_equipa2[$i][0]['id_equipa'])->all();
             }
 
@@ -62,7 +63,19 @@ class MeusJogosController extends \yii\web\Controller
 
 
 
+
+            for($j=0;$j<count($usernames1)+2;$j++){
+               // $total_golos1[$i]=array_sum($golos_equipa1[$i][$j]['golosMarcados']);
+
+            }
+            for($j=0;$j<count($usernames2)+2;$j++){
+               // $total_golos2[$i]=$total_golos2[$i]+$golos_equipa2[$i][$j]['golosMarcados'];
+
+            }
+
+
         }
+
 
 
 
