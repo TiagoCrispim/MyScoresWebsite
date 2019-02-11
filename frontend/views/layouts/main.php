@@ -45,14 +45,14 @@ AppAsset::register($this);
     } else {
         NavBar::begin([
             'brandLabel' => '<img src="' . Url::to('@web/images/logotipo.png') .'" height="22" width="22" class="pull-left">'.Yii::$app->name,
-            'brandUrl' => Yii::$app->homeUrl = ['/site/home'],
+            'brandUrl' => Yii::$app->homeUrl = ['/site/index'],
             'options' => [
                 'class' => 'navbar-inverse navbar-fixed-top',
             ],
         ]);
 
         $menuItems = [
-            ['label' => 'Home', 'url' => ['/site/home']],
+            ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Meus Jogos', 'url' => ['/meus-jogos/index']],
             ['label' => 'Contacto', 'url' => ['/sugestao/index']],
             ['label' => 'Perfil', 'url' => ['/site/perfil']],

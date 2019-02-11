@@ -79,7 +79,38 @@ class SiteController extends Controller
         if(Yii::$app->user->isGuest){
             return $this->render('index');
         } else {
-            return $this->render('home');
+            $usersquery= User::findBySql('SELECT username,id FROM user')->all();
+
+            for($i = 0;$i < count($usersquery);$i++){
+                $users[$i] = $usersquery[$i]->username;
+                $id_users[$i]=$usersquery[$i]->id;
+
+            }
+            $model=new User();
+
+            if (Yii::$app->request->isPost) {
+
+
+                $model->username=$users[Yii::$app->request->bodyParams['User']['username']];
+                $user= User::findByUsername($model->username);
+                $userid=$user->id;
+                $queryGolos = GolosJogo::find()->where(['id_user' => $userid]);
+                $golosM = $queryGolos->sum('golosMarcados');
+                $jogosJogados = $queryGolos->count();
+                return $this->render('perfilodeoutrojogador', ['user' => $user, 'golosM' => $golosM, 'jogosJogados' => $jogosJogados]);
+
+            } else{
+
+
+                return $this->render('home',[
+                    'model' => $model,
+                    'users'=> $users,
+                    'id_users'=>$id_users
+
+                    ]
+
+                    );
+            }
         }
     }
 
@@ -141,6 +172,7 @@ class SiteController extends Controller
     {
         //$user corresponde ao utilizador que pretendemos visualizar
         //$user = Yii::$app->user->identity;
+
         $userid = Yii::$app->user->getId();
         $queryGolos = GolosJogo::find()->where(['id_user' => $userid]);
         $golosM = $queryGolos->sum('golosMarcados');

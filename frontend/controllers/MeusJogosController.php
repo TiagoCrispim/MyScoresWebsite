@@ -43,13 +43,15 @@ class MeusJogosController extends \yii\web\Controller
 
         $golos_user= GolosJogo::findBySql('SELECT * FROM golos_jogo where id_user='.$user_id.' ORDER BY ID')->all();
 
+
         for($i=0;$i<count($golos_user);$i++) {
+            //$jogos= Jogo::findBySql('SELECT * FROM jogos where ')
             $golos_equipa1[$i] = GolosJogo::findBySql('SELECT * FROM golos_jogo where id_equipa=' . $golos_user[$i]->id_equipa)->all();
             $nome_equipa1[$i]= Equipa::findBySql('SELECT nome FROM equipa where  id=' . $golos_user[$i]->id_equipa)->all();
 
             for ($j = 0; $j < count($golos_equipa1); $j++) {
                 $id_jogo = $golos_equipa1[$i][0]['id_jogo'];
-                $golos_equipa2[$i] = GolosJogo::findBySql('SELECT * FROM golos_jogo where id_jogo=' . $id_jogo . ' and id_equipa<>' . $golos_user[$i]->id_equipa)->all();
+                $golos_equipa2[$i]= GolosJogo::findBySql('SELECT * FROM golos_jogo where id_jogo=' . $id_jogo . ' and id_equipa<>' . $golos_user[$i]->id_equipa)->all();
                 $nome_equipa2[$i]= Equipa::findBySql('SELECT nome FROM equipa where  id=' . $golos_equipa2[$i][0]['id_equipa'])->all();
             }
 
@@ -58,7 +60,12 @@ class MeusJogosController extends \yii\web\Controller
                 $usernames2[$i][$j] = User::findOne($golos_equipa2[$i][$j]['id_user'])->username;
             }
 
+
+
         }
+
+
+
 
 
 
