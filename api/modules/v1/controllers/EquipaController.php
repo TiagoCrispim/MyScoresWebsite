@@ -56,11 +56,6 @@ class EquipaController extends ActiveController
 
     public function actionCriarjogo(){
         $id_criador=Yii::$app->request->post('id_criador');
-        $jogo= new Jogo();
-        $jogo->local=Yii::$app->request->post('local');
-        $jogo->hora=Yii::$app->request->post('hora');
-        $jogo->data=Yii::$app->request->post('data');
-        $jogo->save(false);
 
         $equipas=Equipa::findBySql('SELECT * FROM equipa WHERE id_criador='.$id_criador.' ORDER BY ID DESC LIMIT 2')->all();
 
