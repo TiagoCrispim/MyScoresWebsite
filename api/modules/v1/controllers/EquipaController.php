@@ -37,27 +37,22 @@ class EquipaController extends ActiveController
         $equipa->save();
 
         for($i=1;$i<10;$i++){
-            if(Yii::$app->request->post('username'.$i.'') != 0){
+            if(Yii::$app->request->post('username'.$i.'')  ){
                 $user_equipa= new EquipaUser();
-                $user= User::findByUsername(Yii::$app->request->post('username'.$i.''));
+                $user= User::findByUsername(Yii::$app->request->post('username'.$i));
                 $user_equipa->id_user=$user->id;
                 $equipa_atual=Equipa::findBySql('SELECT * FROM equipa WHERE id_criador=' . $equipa->id_criador . ' ORDER BY ID DESC LIMIT 1')->all();
                 $user_equipa->id_equipa=$equipa_atual->id;
-                $user_equipa->save();
+                $user_equipa->save(false);
 
             }
 
 
 
         }
+    }
 
-
-
-
-
-
-
-
+    public function actionCriarjogo(){
 
     }
 
