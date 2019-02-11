@@ -22,14 +22,14 @@ class EquipaController extends ActiveController
     }*/
 
 
-    public function behaviors()
+    /*public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => QueryParamAuth::className()
         ];
         return $behaviors;
-    }
+    }*/
 
     public function actionCriarequipa(){
         $equipa = new \common\models\Equipa();

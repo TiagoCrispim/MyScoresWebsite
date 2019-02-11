@@ -47,7 +47,8 @@ return [
                         '{id}' => '<id:\\w+>'
                     ],
                     'extraPatterns' => [
-                        'POST criarequipa'=>'ciarequipa',
+                        'POST criarjogo' => 'criarjogo',
+                        'POST criarequipa'=>'criarequipa',
                         'POST login' => 'login',
                         'POST registo' => 'registo',
                         'GET meusjogos' => 'meusjogos',
