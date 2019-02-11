@@ -86,24 +86,24 @@ class EquipaController extends ActiveController
         $jogo = Jogo:: findBySql('SELECT id FROM jogo ORDER BY ID DESC LIMIT 1')->one();
 
         for($i=0;$i<10;$i++){
-            if(Yii::$app->request->post('jogagorA'.$i.'') ){
+            if(Yii::$app->request->post('jogadorA'.$i.'') ){
                 $golos_jogo=new GolosJogo();
                 $golos_jogo->id_equipa=$id_equipa1;
                 $golos_jogo->id_jogo=$jogo->id;
                 $golos_jogo->id_user=$players_1[$i]['id_user'];
-                $golos_jogo->golosMarcados=Yii::$app->request->post('jogagorA'.$i);
+                $golos_jogo->golosMarcados=Yii::$app->request->post('jogadorA'.$i);
                 $golos_jogo->save();
 
             }
         }
 
         for($i=0;$i<10;$i++){
-            if(Yii::$app->request->post('jogagorB'.$i.'') ){
+            if(Yii::$app->request->post('jogadorB'.$i.'') ){
                 $golos_jogo=new GolosJogo();
                 $golos_jogo->id_equipa=$id_equipa2;
                 $golos_jogo->id_jogo=$jogo->id;
                 $golos_jogo->id_user=$players_2[$i]['id_user'];
-                $golos_jogo->golosMarcados=Yii::$app->request->post('jogagorB'.$i);
+                $golos_jogo->golosMarcados=Yii::$app->request->post('jogadorB'.$i);
                 $golos_jogo->save();
 
 
