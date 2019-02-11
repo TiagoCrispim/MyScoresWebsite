@@ -1,39 +1,16 @@
 <?php
-
 namespace api\modules\v1\controllers;
 
+use Yii;
+use yii\rest\ActiveController;
 use common\models\Equipa;
 use common\models\GolosJogo;
 use common\models\User;
-use Yii;
-use yii\filters\auth\CompositeAuth;
-use yii\filters\auth\HttpBearerAuth;
-use yii\filters\auth\QueryParamAuth;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use yii\rest\ActiveController;
 
-/**
- * JogoController implements the CRUD actions for Jogo model.
- */
-class JogoController extends ActiveController
-{
+class MeusjogoController extends ActiveController{
 
-    public $modelClass = 'api\modules\v1\models\Jogo';
+    public $modelClass = '';
 
-    /**
-     * @return array|void
-     */
-
-    /*public function behaviors()
-    {
-        $behaviors = parent::behaviors();
-        $behaviors['authenticator'] = [
-            'class' => QueryParamAuth::className()
-        ];
-        return $behaviors;
-    }*/
 
     public function actionMeusjogos(){
 
@@ -62,17 +39,19 @@ class JogoController extends ActiveController
 
         }
 
-        return [
-            'nome_equipa1'=>$nome_equipa1,
-            'nome_equipa2'=>$nome_equipa2,
-            'golos_equipa1'=>$golos_equipa1,
-            'golos_equipa2'=>$golos_equipa2,
-            'usernames1'=>$usernames1,
-            'usernames2'=>$usernames2
 
-        ];
+
+        return [
+                'nome_equipa1'=>$nome_equipa1,
+                'nome_equipa2'=>$nome_equipa2,
+                'golos_equipa1'=>$golos_equipa1,
+                'golos_equipa2'=>$golos_equipa2,
+                'usernames1'=>$usernames1,
+                'usernames2'=>$usernames2
+
+            ];
+
 
 
     }
-
 }
