@@ -36,7 +36,7 @@ class EquipaController extends ActiveController
         $equipa->nome = Yii::$app->request->post('name');
         $equipa->save();
 
-        for($i=0;$i<10;$i++){
+        for($i=1;$i<10;$i++){
             if(Yii::$app->request->post('username'.$i.'') != 0){
                 $user_equipa= new EquipaUser();
                 $user= User::findByUsername(Yii::$app->request->post('username'.$i.''));
