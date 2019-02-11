@@ -55,8 +55,8 @@ class EquipaController extends ActiveController
     }
 
     public function actionCriarjogo(){
-        $id_criador=Yii::$app->request->post('id_criador');
 
+        $id_criador=Yii::$app->request->post('id_criador');
         $equipas=Equipa::findBySql('SELECT * FROM equipa WHERE id_criador='.$id_criador.' ORDER BY ID DESC LIMIT 2')->all();
 
         $equipa1=$equipas[0];
@@ -83,10 +83,13 @@ class EquipaController extends ActiveController
             ->where (['id_equipa'=>$id_equipa2])
             ->all();
 
+        $jogo = Jogo:: findBySql('SELECT id FROM jogo ORDER BY ID DESC LIMIT 1')->one();
+
         for($i=0;$i<10;$i++){
             if(Yii::$app->request->post('jogagorA'.$i.'') ){
                 $golos_jogo=new GolosJogo();
                 $golos_jogo->id_equipa=$id_equipa1;
+                $golos_jogo->id_jogo=$jogo->id;
                 $golos_jogo->id_user=$players_1[$i]['id_user'];
                 $golos_jogo->golosMarcados=Yii::$app->request->post('jogagorA'.$i.'');
 
@@ -98,6 +101,7 @@ class EquipaController extends ActiveController
             if(Yii::$app->request->post('jogagorB'.$i.'') ){
                 $golos_jogo=new GolosJogo();
                 $golos_jogo->id_equipa=$id_equipa2;
+                $golos_jogo->id_jogo=$jogo->id;
                 $golos_jogo->id_user=$players_2[$i]['id_user'];
                 $golos_jogo->golosMarcados=Yii::$app->request->post('jogagorB'.$i.'');
 
